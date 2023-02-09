@@ -1,4 +1,5 @@
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 interface Props {
   children: React.ReactNode;
@@ -6,13 +7,15 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <>
+    <div className="app-container min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex justify-center">
-        <div className="w-[1300px]">{children}</div>
+      <main className="flex-1">
+        <div className="main-content-container flex justify-center">
+          <div className="w-[1300px]">{children}</div>
+        </div>
       </main>
-      {/* footer */}
-    </>
+      <Footer />
+    </div>
   );
 }
 
