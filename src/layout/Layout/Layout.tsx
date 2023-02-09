@@ -8,8 +8,8 @@ function Layout({ children }: Props) {
   return (
     <>
       <Navbar />
-      <main className="flex justify-center bg-gray-600 ">
-        <div className="w-[1200px]">{children}</div>
+      <main className="flex justify-center">
+        <div className="w-[1300px]">{children}</div>
       </main>
       {/* footer */}
     </>
