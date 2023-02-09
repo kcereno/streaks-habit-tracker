@@ -11,7 +11,7 @@ function App() {
       <div className="flex items-center flex-col">
         <ViewToggle />
         <div className="divider" />
-        <div className="card bg-base-200 shadow-xl">
+        <div className="">
           <HabitGridView />
         </div>
       </div>
