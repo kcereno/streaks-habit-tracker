@@ -1,6 +1,47 @@
 import React from 'react';
+import HabitGridItem from '../HabitGridItem/HabitGridItem';
 
 function HabitGridView() {
+  interface Habit {
+    id: number;
+    name: string;
+    icon: string;
+    frequency: number;
+  }
+
+  const habits: Habit[] = [
+    {
+      id: 1,
+      name: 'Exercise',
+      icon: '💪',
+      frequency: 1,
+    },
+    {
+      id: 2,
+      name: 'Meditate',
+      icon: '🧘‍♂️',
+      frequency: 1,
+    },
+    {
+      id: 3,
+      name: 'Drink water',
+      icon: '💦',
+      frequency: 8,
+    },
+    {
+      id: 4,
+      name: 'Reading',
+      icon: '📖',
+      frequency: 2,
+    },
+    {
+      id: 5,
+      name: 'Journal',
+      icon: '📝',
+      frequency: 2,
+    },
+  ];
+
   return (
     <div className="indicator">
       <div className="indicator-item indicator-bottom">
@@ -32,12 +73,9 @@ function HabitGridView() {
       <div className="card bg-base-200 shadow-xl ">
         <div className="card-body  flex flex-col">
           <div className="habit-grid grid grid-cols-2 gap-10 p-5">
-            <div className="w-60 h-60 bg-red-400 border">item1</div>
-            <div className="w-60 h-60 bg-red-400 border">item2</div>
-            <div className="w-60 h-60 bg-red-400 border">item3</div>
-            <div className="w-60 h-60 bg-red-400 border">item4</div>
-            <div className="w-60 h-60 bg-red-400 border">item5</div>
-            <div className="w-60 h-60 bg-red-400 border">item6</div>
+            {habits.map((habit) => (
+              <HabitGridItem name={habit.name} icon={habit.icon} />
+            ))}
           </div>
         </div>
       </div>
