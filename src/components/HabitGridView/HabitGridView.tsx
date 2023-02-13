@@ -1,14 +1,8 @@
 import React from 'react';
 import HabitGridItem from '../HabitGridItem/HabitGridItem';
+import { Habit } from '../../models/models';
 
 function HabitGridView() {
-  interface Habit {
-    id: number;
-    name: string;
-    icon: string;
-    frequency: number;
-  }
-
   const habits: Habit[] = [
     {
       id: 1,
@@ -74,7 +68,7 @@ function HabitGridView() {
         <div className="card-body  flex flex-col">
           <div className="habit-grid grid grid-cols-2 gap-10 p-5">
             {habits.map((habit) => (
-              <HabitGridItem name={habit.name} icon={habit.icon} />
+              <HabitGridItem habit={habit} />
             ))}
           </div>
         </div>

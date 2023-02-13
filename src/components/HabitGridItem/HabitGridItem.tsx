@@ -1,10 +1,14 @@
+import { Habit } from '../../models/models';
+import { getFrequencyText } from '../../utils/functions';
+
 interface Props {
-  name: string;
-  icon: string;
+  habit: Habit;
 }
 
-function HabitGridItem({ name, icon }: Props) {
+function HabitGridItem({ habit: { name, icon, frequency } }: Props) {
   const progressVal = { '--value': 70 } as React.CSSProperties;
+
+  const frequencyText = getFrequencyText(frequency);
 
   return (
     <div className="container w-80  bg-base-300 text-center rounded ">
@@ -24,7 +28,7 @@ function HabitGridItem({ name, icon }: Props) {
         </div>
         <div>
           <p className="text-2xl font-bold">{name}</p>
-          <p>Once a day</p>
+          <p>{frequencyText}</p>
         </div>
       </div>
 
