@@ -14,7 +14,7 @@ function ViewToggle({ view, updateView }: Props) {
     updateView('board');
   };
   return (
-    <div className="mt-8 btn-group">
+    <div className="btn-group">
       <button
         id="button-board"
         type="button"
