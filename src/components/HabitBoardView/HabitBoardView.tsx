@@ -68,7 +68,7 @@ function HabitBoardView() {
         <div className="card-body  flex flex-col">
           <div className="habit-grid grid grid-cols-2 gap-10 p-5">
             {habits.map((habit) => (
-              <HabitGridItem habit={habit} />
+              <HabitGridItem key={habit.id} habit={habit} />
             ))}
           </div>
         </div>

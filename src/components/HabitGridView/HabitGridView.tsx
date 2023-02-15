@@ -14,7 +14,7 @@ function HabitGridView() {
               <tr>
                 <th>Habit</th>
                 {days.map((day) => (
-                  <td>{day}</td>
+                  <td key={day}>{day}</td>
                 ))}
               </tr>
             </thead>
@@ -22,12 +22,8 @@ function HabitGridView() {
               <tr>
                 <td>Reading</td>
                 {days.map((day) => (
-                  <td>
-                    <input
-                      key={day}
-                      type="checkbox"
-                      className="checkbox checkbox-xs"
-                    />
+                  <td key={day}>
+                    <input type="checkbox" className="checkbox checkbox-xs" />
                   </td>
                 ))}
               </tr>
