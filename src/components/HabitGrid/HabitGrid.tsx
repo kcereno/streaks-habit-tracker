@@ -27,6 +27,22 @@ function HabitGrid() {
                   </td>
                 ))}
               </tr>
+              <tr>
+                <td>Exercise</td>
+                {days.map((day) => (
+                  <td key={day}>
+                    <input type="checkbox" className="checkbox checkbox-xs" />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td>Eat Vegetables</td>
+                {days.map((day) => (
+                  <td key={day}>
+                    <input type="checkbox" className="checkbox checkbox-xs" />
+                  </td>
+                ))}
+              </tr>
             </tbody>
           </table>
         </div>

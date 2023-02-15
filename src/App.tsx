@@ -7,6 +7,7 @@ import Layout from './layout/Layout/Layout';
 // import HabitBoard from './components/HabitBoard/HabitBoard';
 import { ViewTypes } from './models/models';
 import HabitBoard from './components/HabitBoard/HabitBoard';
+import HabitGrid from './components/HabitGrid/HabitGrid';
 
 function App() {
   const [view, setView] = useState<ViewTypes>('board');
@@ -17,6 +18,7 @@ function App() {
       {view === 'grid' && <HabitGrid />} */}
 
       <HabitBoard />
+      {/* <HabitGrid /> */}
     </Layout>
   );
 }
