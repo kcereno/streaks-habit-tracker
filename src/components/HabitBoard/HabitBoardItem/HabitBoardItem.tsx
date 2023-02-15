@@ -9,7 +9,7 @@ function HabitBoardItem({ habit: { name, icon, frequency } }: Props) {
   const frequencyText = getFrequencyText(frequency);
 
   return (
-    <div className="container w-80  bg-base-300 text-center rounded ">
+    <div className="container w-80  bg-base-200 text-center shadow-lg rounded ">
       {/* Streak Data */}
       <div className="streak-data mt-4 text-gray-500">
         <p className="font-bold">Streak</p>
