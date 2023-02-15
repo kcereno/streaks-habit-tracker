@@ -6,7 +6,7 @@ function HabitGridView() {
     23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
   return (
-    <div className="">
+    <div className="" data-testid="HabitGridView">
       <div className="card shadow-xl ">
         <div className="overflow-x-auto mt-10 text-center ">
           <table className="table table-compact w-full">

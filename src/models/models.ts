@@ -4,3 +4,5 @@ export interface Habit {
   icon: string;
   frequency: number;
 }
+
+export type ViewTypes = 'board' | 'grid';

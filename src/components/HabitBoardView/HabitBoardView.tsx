@@ -37,7 +37,7 @@ function HabitBoardView() {
   ];
 
   return (
-    <div className="indicator">
+    <div className="indicator" data-testid="HabitBoardView">
       <div className="indicator-item indicator-bottom">
         <button className="btn btn-primary" type="button">
           <svg
