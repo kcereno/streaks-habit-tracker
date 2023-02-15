@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Layout from './layout/Layout/Layout';
 import ViewToggle from './components/ViewToggle/ViewToggle';
-import HabitGridView from './components/HabitGridView/HabitGridView';
-import HabitBoardView from './components/HabitBoardView/HabitBoardView';
+import HabitGrid from './components/HabitGrid/HabitGrid';
+import HabitBoard from './components/HabitBoard/HabitBoard';
 import { ViewTypes } from './models/models';
 
 function App() {
@@ -17,10 +17,8 @@ function App() {
       <div className="flex items-center flex-col">
         <ViewToggle view={view} updateView={updateView} />
         <div className="divider" />
-        {view === 'board' && <HabitBoardView />}
-        {view === 'grid' && <HabitGridView />}
-        {/* <HabitBoardView />
-        <HabitGridView /> */}
+        {view === 'board' && <HabitBoard />}
+        {view === 'grid' && <HabitGrid />}
       </div>
     </Layout>
   );

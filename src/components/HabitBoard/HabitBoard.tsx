@@ -1,8 +1,8 @@
 import React from 'react';
-import HabitGridItem from '../HabitBoardItem/HabitBoardItem';
+import HabitGridItem from './HabitBoardItem/HabitBoardItem';
 import { Habit } from '../../models/models';
 
-function HabitBoardView() {
+function HabitBoard() {
   const habits: Habit[] = [
     {
       id: 1,
@@ -77,4 +77,4 @@ function HabitBoardView() {
   );
 }
 
-export default HabitBoardView;
+export default HabitBoard;

@@ -1,5 +1,5 @@
-import { Habit } from '../../models/models';
-import { getFrequencyText } from '../../utils/functions';
+import { Habit } from '../../../models/models';
+import { getFrequencyText } from '../../../utils/functions';
 
 interface Props {
   habit: Habit;
