@@ -5,9 +5,7 @@ interface Props {
   habit: Habit;
 }
 
-function HabitGridItem({ habit: { name, icon, frequency } }: Props) {
-  const progressVal = { '--value': 70 } as React.CSSProperties;
-
+function HabitBoardItem({ habit: { name, icon, frequency } }: Props) {
   const frequencyText = getFrequencyText(frequency);
 
   return (
@@ -34,9 +32,11 @@ function HabitGridItem({ habit: { name, icon, frequency } }: Props) {
 
       {/* Progress */}
       <div className="progress-data flex flex-col items-center mt-8">
-        <div className="radial-progress" style={progressVal}>
-          70%
-        </div>
+        <progress
+          className="progress progress-secondary w-56"
+          value="80"
+          max="100"
+        />
         <div className="mt-4">
           <p> 1/2</p>
         </div>
@@ -54,4 +54,4 @@ function HabitGridItem({ habit: { name, icon, frequency } }: Props) {
   );
 }
 
-export default HabitGridItem;
+export default HabitBoardItem;

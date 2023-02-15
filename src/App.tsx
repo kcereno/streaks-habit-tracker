@@ -4,6 +4,7 @@ import './App.css';
 import Layout from './layout/Layout/Layout';
 import ViewToggle from './components/ViewToggle/ViewToggle';
 import HabitGridView from './components/HabitGridView/HabitGridView';
+import HabitBoardView from './components/HabitBoardView/HabitBoardView';
 
 function App() {
   return (
@@ -11,9 +12,8 @@ function App() {
       <div className="flex items-center flex-col">
         <ViewToggle />
         <div className="divider" />
-        <div className="">
-          <HabitGridView />
-        </div>
+        <HabitBoardView />
+        <HabitGridView />
       </div>
     </Layout>
   );

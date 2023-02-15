@@ -7,7 +7,7 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <div className="app-container min-h-screen flex flex-col">
+    <div className="app-container min-h-screen flex flex-col bg-base-100">
       <Navbar />
       <main className="flex-1">
         <div className="main-content-container flex justify-center">

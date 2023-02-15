@@ -1,76 +1,38 @@
 import React from 'react';
-import HabitGridItem from '../HabitGridItem/HabitGridItem';
-import { Habit } from '../../models/models';
 
 function HabitGridView() {
-  const habits: Habit[] = [
-    {
-      id: 1,
-      name: 'Exercise',
-      icon: '💪',
-      frequency: 1,
-    },
-    {
-      id: 2,
-      name: 'Meditate',
-      icon: '🧘‍♂️',
-      frequency: 1,
-    },
-    {
-      id: 3,
-      name: 'Drink water',
-      icon: '💦',
-      frequency: 8,
-    },
-    {
-      id: 4,
-      name: 'Reading',
-      icon: '📖',
-      frequency: 2,
-    },
-    {
-      id: 5,
-      name: 'Journal',
-      icon: '📝',
-      frequency: 2,
-    },
+  const days: number[] = [
+    1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+    23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
-
   return (
-    <div className="indicator">
-      <div className="indicator-item indicator-bottom">
-        <button className="btn btn-primary" type="button">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-          >
-            <path
-              d="M12 5V19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M19 12H5"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className="card bg-base-200 shadow-xl ">
-        <div className="card-body  flex flex-col">
-          <div className="habit-grid grid grid-cols-2 gap-10 p-5">
-            {habits.map((habit) => (
-              <HabitGridItem habit={habit} />
-            ))}
-          </div>
+    <div className="">
+      <div className="card shadow-xl ">
+        <div className="overflow-x-auto mt-10 text-center ">
+          <table className="table table-compact w-full">
+            <thead>
+              <tr>
+                <th>Habit</th>
+                {days.map((day) => (
+                  <td>{day}</td>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Reading</td>
+                {days.map((day) => (
+                  <td>
+                    <input
+                      key={day}
+                      type="checkbox"
+                      className="checkbox checkbox-xs"
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
