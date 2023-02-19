@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './App.css';
@@ -14,11 +16,8 @@ function App() {
 
   return (
     <Layout>
-      {/* {view === 'board' && <HabitBoard />}
-      {view === 'grid' && <HabitGrid />} */}
-
-      <HabitBoard />
-      {/* <HabitGrid /> */}
+      {/* <HabitBoard /> */}
+      <HabitGrid />
     </Layout>
   );
 }

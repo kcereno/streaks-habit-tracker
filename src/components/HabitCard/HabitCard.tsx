@@ -2,7 +2,7 @@ import React from 'react';
 
 function HabitCard() {
   return (
-    <div className="card w-2/5 grow card-compact bg-base-100 shadow-xl">
+    <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl">
       <div className="card-body">
         {/* Habit Details */}
         <div className="text-center my-4">

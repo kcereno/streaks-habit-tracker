@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Pagination from '../../components/Pagination/Pagination';
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +12,11 @@ function Layout({ children }: Props) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-1 flex flex-col  bg-neutral mb-20">{children}</main>
+      <main className="flex-1 flex flex-col items-center bg-base-300 mb-20">
+        <ViewToggle />
+        {children}
+        <Pagination />
+      </main>
       <Footer />
     </div>
   );

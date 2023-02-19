@@ -1,5 +1,4 @@
 /* eslint-disable react/button-has-type */
-import ViewToggle from '../../components/ViewToggle/ViewToggle';
 
 function Navbar() {
   return (
@@ -44,20 +43,6 @@ function Navbar() {
               />
             </svg>
           </button>
-        </div>
-      </div>
-
-      {/* Desktop Nav */}
-      <div className="bg-base-300 justify-center py-2 hidden tablet:flex">
-        <div className="navbar w-[1300px] ">
-          <div className="flex-1">
-            <p className="btn btn-ghost normal-case text-xl">
-              Streaks - Daily Habit Tracker
-            </p>
-          </div>
-          <div className="flex-none">
-            <ViewToggle view="board" updateView={() => {}} />
-          </div>
         </div>
       </div>
     </>

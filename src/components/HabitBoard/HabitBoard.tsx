@@ -41,20 +41,14 @@ function HabitBoard() {
   ];
 
   return (
-    <section className="habit-board my-10 mx-2">
+    <section className="habit-board mx-2">
       <div className="habit-cards-container flex flex-wrap gap-2 justify-center">
         <HabitCard />
         <HabitCard />
         <HabitCard />
         <HabitCard />
         <HabitCard />
-      </div>
-      <div className="flex justify-center mt-6">
-        <div className="btn-group">
-          <button className="btn">«</button>
-          <button className="btn">1</button>
-          <button className="btn">»</button>
-        </div>
+        <HabitCard />
       </div>
     </section>
   );

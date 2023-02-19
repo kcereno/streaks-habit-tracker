@@ -1,36 +1,12 @@
-import { ViewTypes } from '../../models/models';
+/* eslint-disable react/button-has-type */
 
-interface Props {
-  view: ViewTypes;
-  updateView: (updatedView: ViewTypes) => void;
-}
-
-function ViewToggle({ view, updateView }: Props) {
-  const handleGridButtonClick = () => {
-    updateView('grid');
-  };
-
-  const handleBoardButtonClick = () => {
-    updateView('board');
-  };
+function ViewToggle() {
   return (
-    <div className="btn-group">
-      <button
-        id="button-board"
-        type="button"
-        className={`btn ${view === 'board' ? 'btn-active' : ''}`}
-        onClick={handleBoardButtonClick}
-      >
-        board
-      </button>
-      <button
-        id="button-grid"
-        type="button"
-        className={`btn ${view === 'grid' ? 'btn-active' : ''}`}
-        onClick={handleGridButtonClick}
-      >
-        grid
-      </button>
+    <div className="flex justify-center ">
+      <div className="btn-group my-6">
+        <button className="btn btn-sm btn-active">Board</button>
+        <button className="btn btn-sm">Grid</button>
+      </div>
     </div>
   );
 }
