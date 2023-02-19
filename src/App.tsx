@@ -17,7 +17,7 @@ function App() {
       {/* {view === 'board' && <HabitBoard />}
       {view === 'grid' && <HabitGrid />} */}
 
-      {/* <HabitBoard /> */}
+      <HabitBoard />
       {/* <HabitGrid /> */}
     </Layout>
   );

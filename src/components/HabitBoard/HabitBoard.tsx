@@ -1,6 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/button-has-type */
 import React from 'react';
-import HabitGridItem from './HabitBoardItem/HabitBoardItem';
+// import HabitGridItem from './HabitBoardItem/HabitBoardItem';
 import { Habit } from '../../models/models';
+import HabitCard from '../HabitCard/HabitCard';
 
 function HabitBoard() {
   const habits: Habit[] = [
@@ -37,33 +41,22 @@ function HabitBoard() {
   ];
 
   return (
-    <div className="py-10" data-testid="HabitBoardView">
-      <div className="card">
-        <div className="card-body  flex flex-col">
-          <div className="habit-grid grid grid-cols-2 gap-10 p-5">
-            {habits.map((habit) => (
-              <HabitGridItem key={habit.id} habit={habit} />
-            ))}
-            {/* New Habit Card */}
-            <div className="container w-80  bg-base-200 text-center shadow-lg rounded flex flex-col items-center justify-center">
-              <div className="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 60 60"
-                >
-                  <circle cx="30" cy="30" r="29" stroke="#fff" fill="none" />
-                  <path fill="#fff" d="M31 17h-2v22h2v-22z" />
-                  <path fill="#fff" d="M43 30v-2H17v2h26z" />
-                </svg>
-              </div>
-              <div className="text-2xl font-bold mt-5">New Habit</div>
-            </div>
-          </div>
+    <section className="habit-board my-10 mx-2">
+      <div className="habit-cards-container flex flex-wrap gap-2 justify-center">
+        <HabitCard />
+        <HabitCard />
+        <HabitCard />
+        <HabitCard />
+        <HabitCard />
+      </div>
+      <div className="flex justify-center mt-6">
+        <div className="btn-group">
+          <button className="btn">«</button>
+          <button className="btn">1</button>
+          <button className="btn">»</button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -4,8 +4,8 @@ import ViewToggle from '../../components/ViewToggle/ViewToggle';
 function Navbar() {
   return (
     <>
-      {/* Bottom Nav */}
-      <div className="mobile-navigation tablet:hidden">
+      {/* Mobile Nav */}
+      <div className="mobile-navigation tablet:hidden z-10">
         <div className="bg-base-100">
           <p className="py-3 font-bold normal-case text-xl  text-center">
             Streaks - Daily Habit Tracker
