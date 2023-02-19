@@ -7,7 +7,7 @@ function HabitGridItem() {
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
   return (
-    <div className="card card-compact w-full bg-base-100 shadow-xl mx-2">
+    <div className="card card-compact w-full bg-base-100 shadow-xl mx-2 ">
       {/* Content Container */}
       <div className="p-4">
         <h2 className="font-bold text-xl text-center">Journal</h2>
@@ -26,7 +26,7 @@ function HabitGridItem() {
                 {days
                   .filter((day) => day >= 1 && day <= 7)
                   .map((day) => (
-                    <h1 className="rounded-full bg-yellow-500 inline-block text-center w-[25px] h-[25px] ">
+                    <h1 className="flex items-center justify-center rounded-full  p-1 bg-yellow-500 w-[30px] h-[30px] ">
                       {day}
                     </h1>
                   ))}
@@ -35,7 +35,16 @@ function HabitGridItem() {
                 {days
                   .filter((day) => day >= 8 && day <= 14)
                   .map((day) => (
-                    <h1 className="rounded-full bg-yellow-500 inline-block text-center w-[25px] h-[25px] ">
+                    <h1 className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] ">
+                      {day}
+                    </h1>
+                  ))}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {days
+                  .filter((day) => day >= 15 && day <= 21)
+                  .map((day) => (
+                    <h1 className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] ">
                       {day}
                     </h1>
                   ))}
@@ -44,16 +53,7 @@ function HabitGridItem() {
                 {days
                   .filter((day) => day >= 22 && day <= 28)
                   .map((day) => (
-                    <h1 className="rounded-full bg-yellow-500 inline-block text-center w-[25px] h-[25px] ">
-                      {day}
-                    </h1>
-                  ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {days
-                  .filter((day) => day >= 22 && day <= 28)
-                  .map((day) => (
-                    <h1 className="rounded-full bg-yellow-500 inline-block text-center w-[25px] h-[25px] ">
+                    <h1 className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] ">
                       {day}
                     </h1>
                   ))}
@@ -62,7 +62,7 @@ function HabitGridItem() {
                 {days.map((day) => {
                   if (day >= 28) {
                     return (
-                      <h1 className="rounded-full bg-yellow-500  inline-block text-center w-[25px] h-[25px] ">
+                      <h1 className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500 text-center w-[30px] h-[30px] ">
                         {day}
                       </h1>
                     );
