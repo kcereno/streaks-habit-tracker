@@ -1,10 +1,19 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
 
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
+import { HabitI } from '../../models/models';
 
-function HabitCard() {
+interface Props {
+  habit: HabitI;
+}
+
+function HabitCard({ habit: { id, icon, name, progress, goal } }: Props) {
   const { editMode } = useContext(AppContext);
+
+  const progressPercentage = (progress / goal) * 100;
 
   return (
     <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl ">
@@ -18,9 +27,9 @@ function HabitCard() {
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
         <div className="text-center">
-          <h1 className="text-4xl tablet:text-5xl">📝</h1>
+          <h1 className="text-4xl tablet:text-5xl">{icon}</h1>
           <h2 className="text-xl font-bold mobile-medium:text-2xl tablet:text-3xl">
-            Journal
+            {name}
           </h2>
           <p className="text-gray-400">Once A Day</p>
           {/* Streak Details */}
@@ -35,10 +44,10 @@ function HabitCard() {
         </div>
         {/* Habit Progress */}
         <div className="mt-5 text-center">
-          <p>1/2</p>
+          <p>{`${progress}/${goal}`}</p>
           <progress
             className="progress progress-primary w-3/4"
-            value="70"
+            value={progressPercentage}
             max="100"
           />
         </div>

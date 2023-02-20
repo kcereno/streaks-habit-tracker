@@ -3,14 +3,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext } from 'react';
 import './App.css';
-import Layout from './layout/Layout/Layout';
 
-import { ViewTypes } from './models/models';
 import HabitBoard from './components/HabitBoard/HabitBoard';
 import HabitGrid from './components/HabitGrid/HabitGrid';
 import ViewToggle from './components/ViewToggle/ViewToggle';
 import Pagination from './components/Pagination/Pagination';
 import AppContext from './store/AppContext/app-context';
+import Layout from './layout/Layout/Layout';
+import habits from './data/data';
 
 function App() {
   const { view } = useContext(AppContext);
@@ -18,7 +18,7 @@ function App() {
   return (
     <Layout>
       <ViewToggle />
-      {view === 'board' && <HabitBoard />}
+      {view === 'board' && <HabitBoard habits={habits} />}
       {view === 'grid' && <HabitGrid />}
       <Pagination />
     </Layout>

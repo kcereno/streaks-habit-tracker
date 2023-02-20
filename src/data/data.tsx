@@ -65,6 +65,43 @@ const habits: HabitI[] = [
       { date: '2022-02-20', completed: true },
     ],
   },
+  {
+    id: 5,
+    icon: '🚰',
+    name: 'Drink Water',
+    progress: 2,
+    goal: 3,
+    logs: [
+      { date: '2023-02-15', completed: true },
+      { date: '2023-02-16', completed: false },
+      { date: '2023-02-19', completed: true },
+      { date: '2023-02-20', completed: false },
+    ],
+  },
+  {
+    id: 6,
+    icon: '🌅',
+    name: 'Watch the Sunrise',
+    progress: 1,
+    goal: 2,
+    logs: [
+      { date: '2023-02-15', completed: true },
+      { date: '2023-02-19', completed: false },
+    ],
+  },
+  {
+    id: 7,
+    icon: '🎸',
+    name: 'Practice Guitar',
+    progress: 4,
+    goal: 5,
+    logs: [
+      { date: '2023-02-16', completed: true },
+      { date: '2023-02-18', completed: true },
+      { date: '2023-02-19', completed: false },
+      { date: '2023-02-20', completed: true },
+    ],
+  },
 ];
 
 export default habits;
