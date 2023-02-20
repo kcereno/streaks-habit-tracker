@@ -8,11 +8,12 @@ import HabitCard from '../HabitCard/HabitCard';
 
 interface Props {
   habits: HabitI[];
+  updateHabit: (updatedHabit: HabitI) => void;
 }
 
-function HabitBoard({ habits }: Props) {
+function HabitBoard({ habits, updateHabit }: Props) {
   const habitCards = habits.map((habit) => (
-    <HabitCard key={habit.id} habit={habit} />
+    <HabitCard key={habit.id} habit={habit} updateHabit={updateHabit} />
   ));
 
   return (

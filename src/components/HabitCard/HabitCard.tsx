@@ -9,13 +9,28 @@ import { getFrequencyText } from '../../utils/functions';
 
 interface Props {
   habit: HabitI;
+  updateHabit: (updatedHabit: HabitI) => void;
 }
 
-function HabitCard({ habit: { id, icon, name, progress, goal } }: Props) {
+function HabitCard({ habit, updateHabit }: Props) {
   const { editMode } = useContext(AppContext);
+  const { id, icon, name, progress, goal } = habit;
 
   const progressPercentage = (progress / goal) * 100;
   const frequencyText = getFrequencyText(goal);
+
+  const handlePlusButtonClick = () => {
+    const newProgressValue = progress + 1;
+
+    const updatedHabit = { ...habit, progress: newProgressValue };
+    updateHabit(updatedHabit);
+  };
+  const handleMinusButtonClick = () => {
+    const newProgressValue = progress - 1;
+
+    const updatedHabit = { ...habit, progress: newProgressValue };
+    updateHabit(updatedHabit);
+  };
 
   return (
     <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl ">
@@ -57,12 +72,14 @@ function HabitCard({ habit: { id, icon, name, progress, goal } }: Props) {
           <button
             type="button"
             className="btn btn-square btn-outline btn-sm tablet:btn-md"
+            onClick={handleMinusButtonClick}
           >
             -
           </button>
           <button
             type="button"
             className="btn btn-square  btn-outline btn-sm tablet:btn-md"
+            onClick={handlePlusButtonClick}
           >
             +
           </button>

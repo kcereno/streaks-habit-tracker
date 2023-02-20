@@ -1,6 +1,6 @@
 import { HabitI } from '../models/models';
 
-const habits: HabitI[] = [
+const mockHabits: HabitI[] = [
   {
     id: 1,
     icon: '🏋️‍♂️',
@@ -104,4 +104,4 @@ const habits: HabitI[] = [
   },
 ];
 
-export default habits;
+export default mockHabits;
