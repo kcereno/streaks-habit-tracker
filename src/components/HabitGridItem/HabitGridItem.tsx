@@ -1,18 +1,23 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import { useContext } from 'react';
+import AppContext from '../../store/AppContext/app-context';
 
 function HabitGridItem() {
+  const { editMode } = useContext(AppContext);
+
   const days: number[] = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
   return (
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
-      <div className="flex justify-end">
-        <button className="btn btn-ghost text-accent text-center text-xs">
-          Select
-        </button>
-      </div>
+      {editMode && (
+        <div className="flex justify-end">
+          <button className="btn btn-ghost text-accent text-center text-xs">
+            Select
+          </button>
+        </div>
+      )}
       {/* Content Container */}
       <div className="py-5 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">Journal</h2>

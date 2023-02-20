@@ -1,14 +1,20 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+
+import { useContext } from 'react';
+import AppContext from '../../store/AppContext/app-context';
 
 function HabitCard() {
+  const { editMode } = useContext(AppContext);
+
   return (
     <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl ">
-      <div className="flex justify-end">
-        <button className="btn btn-ghost text-accent text-center text-xs">
-          Select
-        </button>
-      </div>
+      {editMode && (
+        <div className="flex justify-end">
+          <button className="btn btn-ghost text-accent text-center text-xs">
+            Select
+          </button>
+        </div>
+      )}
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
         <div className="text-center">

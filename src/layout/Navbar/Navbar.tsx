@@ -1,6 +1,17 @@
-/* eslint-disable react/button-has-type */
+import { useContext } from 'react';
+import AppContext from '../../store/AppContext/app-context';
 
 function Navbar() {
+  const { editMode, setEditMode } = useContext(AppContext);
+
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
+  const handleCancelClick = () => {
+    setEditMode(false);
+  };
+
   return (
     <div className="flex justify-center z-10">
       {/* Top Nav */}
@@ -12,12 +23,29 @@ function Navbar() {
             </p>
           </div>
           <div className="">
-            <button className="btn btn-ghost btn-circle text-success">
+            <button
+              className="btn btn-ghost btn-circle text-success"
+              type="button"
+            >
               Add
             </button>
-            <button className="btn btn-ghost btn-circle text-warning">
-              Edit
-            </button>
+            {editMode ? (
+              <button
+                className="btn btn-ghost text-error"
+                type="button"
+                onClick={handleCancelClick}
+              >
+                Cancel
+              </button>
+            ) : (
+              <button
+                className="btn btn-ghost   text-warning"
+                type="button"
+                onClick={handleEditClick}
+              >
+                Edit
+              </button>
+            )}
           </div>
         </div>
       </div>
