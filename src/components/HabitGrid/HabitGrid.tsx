@@ -8,7 +8,7 @@ import HabitGridItem from '../HabitGridItem/HabitGridItem';
 
 function HabitGrid() {
   return (
-    <section className="" data-testid="HabitGrid">
+    <section className="" data-testid="habit-grid">
       <div className="habit-grid-container flex flex-wrap gap-4">
         <HabitGridItem />
         <HabitGridItem />
