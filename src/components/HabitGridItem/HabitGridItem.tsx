@@ -4,39 +4,35 @@
 /* eslint-disable react/button-has-type */
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../store/AppContext/app-context';
-
 import { months } from '../../data/data';
 import Calender from '../Calendar/Calender';
-import { getDaysInMonth } from '../../utils/functions';
 
 function HabitGridItem() {
   const { editMode } = useContext(AppContext);
-  const [monthNumber, setMonthNumber] = useState(0);
+  const [month, setMonth] = useState(0);
   const [year, setYear] = useState(2023);
-
-  const daysInMonth = getDaysInMonth(monthNumber, year);
 
   useEffect(() => {
     const today = new Date();
-    setMonthNumber(today.getMonth());
+    setMonth(today.getMonth());
     setYear(today.getFullYear());
   }, []);
 
   const handlePrevMonthButtonClick = () => {
-    if (monthNumber === 0) {
-      setMonthNumber(11);
+    if (month === 0) {
+      setMonth(11);
       setYear(year - 1);
     } else {
-      setMonthNumber(monthNumber - 1);
+      setMonth(month - 1);
     }
   };
 
   const handleNextMonthButtonClick = () => {
-    if (monthNumber === 11) {
-      setMonthNumber(0);
+    if (month === 11) {
+      setMonth(0);
       setYear(year + 1);
     } else {
-      setMonthNumber(monthNumber + 1);
+      setMonth(month + 1);
     }
   };
 
@@ -63,13 +59,13 @@ function HabitGridItem() {
             <button className="" onClick={handlePrevMonthButtonClick}>
               «
             </button>
-            <div className="text-center">{`${months[monthNumber]} ${year}`}</div>
+            <div className="text-center">{`${months[month]} ${year}`}</div>
             <button className="" onClick={handleNextMonthButtonClick}>
               »
             </button>
           </div>
           {/* Grid Calendar */}
-          <Calender totalDays={daysInMonth} />
+          <Calender date={{ month, year }} />
         </div>
       </div>
     </div>

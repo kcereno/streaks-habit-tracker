@@ -2,15 +2,21 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import Day from '../Day/Day';
+import { getDaysInMonth } from '../../utils/functions';
 
 interface Props {
-  totalDays: number;
+  date: {
+    month: number;
+    year: number;
+  };
 }
 
-function Calender({ totalDays }: Props) {
+function Calender({ date: { month, year } }: Props) {
+  const daysInMonth = getDaysInMonth(month, year);
+
   let days: number[] = [];
 
-  for (let i = 1; i <= totalDays; i++) {
+  for (let i = 1; i <= daysInMonth; i++) {
     days.push(i);
   }
 
