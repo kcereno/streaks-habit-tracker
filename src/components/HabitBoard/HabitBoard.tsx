@@ -41,7 +41,7 @@ function HabitBoard() {
   ];
 
   return (
-    <section className="habit-board mx-2 tablet:mx-4">
+    <section className="habit-board mx-2 tablet:mx-4" data-testid="HabitBoard">
       <div className="habit-cards-container flex flex-wrap gap-2 tablet:gap-4 justify-center max-w-[900px]">
         <HabitCard />
         <HabitCard />
