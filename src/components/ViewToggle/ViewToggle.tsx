@@ -1,9 +1,10 @@
 import { ViewTypes } from '../../models/models';
 
 interface Props {
+  view: ViewTypes;
   updateView: (updatedview: ViewTypes) => void;
 }
-function ViewToggle({ updateView }: Props) {
+function ViewToggle({ updateView, view }: Props) {
   const handleGridButtonClick = () => {
     updateView('grid');
   };
@@ -17,17 +18,17 @@ function ViewToggle({ updateView }: Props) {
       <div className="btn-group my-6">
         <button
           type="button"
-          className="btn btn-sm btn-active"
+          className={`btn btn-sm ${view === 'board' && 'btn-active'}`}
           onClick={handleBoardButtonClick}
         >
-          Board
+          board
         </button>
         <button
           type="button"
-          className="btn btn-sm"
+          className={`btn btn-sm ${view === 'grid' && 'btn-active'}`}
           onClick={handleGridButtonClick}
         >
-          Grid
+          grid
         </button>
       </div>
     </div>

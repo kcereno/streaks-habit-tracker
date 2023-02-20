@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Layout>
-      <ViewToggle updateView={setView} />
+      <ViewToggle updateView={setView} view={view} />
       {view === 'board' && <HabitBoard />}
       {view === 'grid' && <HabitGrid />}
       <Pagination />
