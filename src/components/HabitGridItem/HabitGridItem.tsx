@@ -7,9 +7,9 @@ function HabitGridItem() {
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
   return (
-    <div className="card card-compact w-full bg-base-100 shadow-xl mx-2">
+    <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
       {/* Content Container */}
-      <div className="py-5">
+      <div className="py-5 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">Journal</h2>
         <div className="flex justify-center gap-4 text-slate-500">
           <p>Current: 4</p>

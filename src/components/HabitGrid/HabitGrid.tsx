@@ -12,6 +12,8 @@ function HabitGrid() {
       <div className="habit-grid-container flex flex-wrap gap-4">
         <HabitGridItem />
         <HabitGridItem />
+        <HabitGridItem />
+        <HabitGridItem />
       </div>
     </div>
   );
