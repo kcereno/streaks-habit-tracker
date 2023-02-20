@@ -4,10 +4,19 @@ function HabitCard() {
   return (
     <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl">
       <div className="card-body">
+        {/* Streak Details */}
+        <div className="hidden mobile-medium:flex justify-between">
+          <div className="">
+            <p>Longest: 4</p>
+          </div>
+          <div className="">
+            <p>Current: 2</p>
+          </div>
+        </div>
         {/* Habit Details */}
         <div className="text-center my-4">
           <h1 className="text-4xl">📝</h1>
-          <h2 className="text-xl font-bold">Journal</h2>
+          <h2 className="text-xl font-bold mobile-medium:text-2xl">Journal</h2>
           <p className="text-gray-500">Once A Day</p>
           {/* Habit Progress */}
           <div className=" mt-4">

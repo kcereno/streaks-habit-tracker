@@ -16,8 +16,8 @@ function App() {
 
   return (
     <Layout>
-      {/* <HabitBoard /> */}
-      <HabitGrid />
+      <HabitBoard />
+      {/* <HabitGrid /> */}
     </Layout>
   );
 }
