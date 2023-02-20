@@ -1,0 +1,15 @@
+import React from 'react';
+
+interface Props {
+  day: number;
+}
+
+function Day({ day }: Props) {
+  return (
+    <h1 className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500 text-center w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px]">
+      {day}
+    </h1>
+  );
+}
+
+export default Day;
