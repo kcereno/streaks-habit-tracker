@@ -8,6 +8,11 @@ function HabitGridItem() {
   ];
   return (
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
+      <div className="flex justify-end">
+        <button className="btn btn-ghost text-accent text-center text-xs">
+          Select
+        </button>
+      </div>
       {/* Content Container */}
       <div className="py-5 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">Journal</h2>
