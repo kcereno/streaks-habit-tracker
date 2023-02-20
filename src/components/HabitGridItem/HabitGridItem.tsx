@@ -1,14 +1,41 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../store/AppContext/app-context';
+
+import { months } from '../../data/data';
 
 function HabitGridItem() {
   const { editMode } = useContext(AppContext);
+  const [monthNumber, setMonthNumber] = useState(0);
+  const [year, setYear] = useState(2023);
 
-  const days: number[] = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-  ];
+  useEffect(() => {
+    const today = new Date();
+    setMonthNumber(today.getMonth());
+    setYear(today.getFullYear());
+  }, []);
+
+  const handlePrevMonthButtonClick = () => {
+    if (monthNumber === 0) {
+      setMonthNumber(11);
+      setYear(year - 1);
+    } else {
+      setMonthNumber(monthNumber - 1);
+    }
+  };
+
+  const handleNextMonthButtonClick = () => {
+    if (monthNumber === 11) {
+      setMonthNumber(0);
+      setYear(year + 1);
+    } else {
+      setMonthNumber(monthNumber + 1);
+    }
+  };
+
   return (
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
       {editMode && (
@@ -29,12 +56,16 @@ function HabitGridItem() {
         <div className="mt-4 ">
           {/* Calendar Controls */}
           <div className="flex justify-center gap-4">
-            <button className="">«</button>
-            <div className="text-center">February 2020</div>
-            <button className="">»</button>
+            <button className="" onClick={handlePrevMonthButtonClick}>
+              «
+            </button>
+            <div className="text-center">{`${months[monthNumber]} ${year}`}</div>
+            <button className="" onClick={handleNextMonthButtonClick}>
+              »
+            </button>
           </div>
           {/* Grid Calendar */}
-          <div className="flex justify-center mt-2">
+          {/* <div className="flex justify-center mt-2">
             <div className="flex flex-col gap-2 text-center text-white mt-2">
               <div className="flex flex-wrap gap-2">
                 {days
@@ -100,7 +131,7 @@ function HabitGridItem() {
                 })}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
