@@ -5,6 +5,7 @@
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
+import { getFrequencyText } from '../../utils/functions';
 
 interface Props {
   habit: HabitI;
@@ -14,6 +15,7 @@ function HabitCard({ habit: { id, icon, name, progress, goal } }: Props) {
   const { editMode } = useContext(AppContext);
 
   const progressPercentage = (progress / goal) * 100;
+  const frequencyText = getFrequencyText(goal);
 
   return (
     <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl ">
@@ -28,12 +30,12 @@ function HabitCard({ habit: { id, icon, name, progress, goal } }: Props) {
         {/* Habit Details */}
         <div className="text-center">
           <h1 className="text-4xl tablet:text-5xl">{icon}</h1>
-          <h2 className="text-xl font-bold mobile-medium:text-2xl tablet:text-3xl">
+          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl">
             {name}
           </h2>
-          <p className="text-gray-400">Once A Day</p>
+          <p className="text-gray-400">{frequencyText}</p>
           {/* Streak Details */}
-          <div className="hidden mobile-medium:flex justify-center gap-4 ">
+          <div className="hidden mobile-medium:flex justify-center gap-4 mt-2 ">
             <div className="">
               <p>Current: 2</p>
             </div>
