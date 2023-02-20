@@ -3,11 +3,11 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 // import HabitGridItem from './HabitBoardItem/HabitBoardItem';
-import { Habit } from '../../models/models';
+import { HabitI } from '../../models/models';
 import HabitCard from '../HabitCard/HabitCard';
 
 function HabitBoard() {
-  const habits: Habit[] = [
+  const habits: HabitI[] = [
     {
       id: 1,
       name: 'Exercise',

@@ -1,8 +1,15 @@
-export interface Habit {
+export interface HabitI {
   id: number;
-  name: string;
   icon: string;
-  frequency: number;
+  name: string;
+  progress: number;
+  goal: number;
+  logs: HabitLogI[];
+}
+
+interface HabitLogI {
+  date: string;
+  completed: boolean;
 }
 
 export type ViewTypes = 'board' | 'grid';
