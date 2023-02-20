@@ -6,6 +6,7 @@ module.exports = {
       'mobile-medium': '375px',
       'mobile-large': '425px',
       tablet: '426px',
+      max: '900px',
     },
     extend: {},
   },
