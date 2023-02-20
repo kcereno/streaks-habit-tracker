@@ -81,7 +81,7 @@ const mockHabits: HabitI[] = [
   {
     id: 6,
     icon: '🌅',
-    name: 'Watch the Sunrise',
+    name: 'Meditate',
     progress: 1,
     goal: 2,
     logs: [

@@ -33,7 +33,7 @@ function HabitCard({ habit, updateHabit }: Props) {
   };
 
   return (
-    <div className="card w-2/5 grow card-compact bg-base-200 shadow-xl ">
+    <div className="card w-2/5 grow  card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
         <div className="flex justify-end">
           <button className="btn btn-ghost text-accent text-center text-xs">
@@ -44,20 +44,11 @@ function HabitCard({ habit, updateHabit }: Props) {
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
         <div className="text-center">
-          <h1 className="text-4xl tablet:text-5xl">{icon}</h1>
-          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl">
+          <h1 className="text-4xl tablet:text-5xl max:text-6xl">{icon}</h1>
+          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">
             {name}
           </h2>
-          <p className="text-gray-400">{frequencyText}</p>
-          {/* Streak Details */}
-          <div className="hidden mobile-medium:flex justify-center gap-4 mt-2 ">
-            <div className="">
-              <p>Current: 2</p>
-            </div>
-            <div className="">
-              <p>Longest: 4</p>
-            </div>
-          </div>
+          <p className="text-gray-400 max:text-xl">{frequencyText}</p>
         </div>
         {/* Habit Progress */}
         <div className="mt-5 text-center">
@@ -71,7 +62,8 @@ function HabitCard({ habit, updateHabit }: Props) {
         <div className="progress-buttons flex justify-center gap-1 tablet:gap-3 mt-4">
           <button
             type="button"
-            className="btn btn-square btn-outline btn-sm tablet:btn-md"
+            className="btn btn-square btn-outline btn-sm tablet:btn-md "
+            disabled={progress === 0}
             onClick={handleMinusButtonClick}
           >
             -
@@ -80,6 +72,7 @@ function HabitCard({ habit, updateHabit }: Props) {
             type="button"
             className="btn btn-square  btn-outline btn-sm tablet:btn-md"
             onClick={handlePlusButtonClick}
+            disabled={progress === goal}
           >
             +
           </button>
