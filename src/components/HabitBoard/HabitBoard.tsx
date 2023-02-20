@@ -41,8 +41,8 @@ function HabitBoard() {
   ];
 
   return (
-    <section className="habit-board mx-2">
-      <div className="habit-cards-container flex flex-wrap gap-2 justify-center">
+    <section className="habit-board mx-2 tablet:mx-4">
+      <div className="habit-cards-container flex flex-wrap gap-2 tablet:gap-4 justify-center">
         <HabitCard />
         <HabitCard />
         <HabitCard />

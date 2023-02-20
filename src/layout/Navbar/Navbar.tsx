@@ -3,14 +3,22 @@
 function Navbar() {
   return (
     <>
-      {/* Mobile Nav */}
-      <div className="mobile-navigation tablet:hidden z-10">
-        <div className="bg-base-100">
-          <p className="py-3 font-bold normal-case text-xl  text-center">
-            Streaks - Daily Habit Tracker
-          </p>
+      {/* Top Nav */}
+      <div className="flex justify-center z-10">
+        {/* Top Nav */}
+        <div className="w-[1200px]">
+          <div className="tablet:flex items-center justify-between tablet:mx-4 ">
+            <div>
+              <p className="py-3 font-bold normal-case text-xl text-center tablet:text-left ">
+                Streaks - Daily Habit Tracker
+              </p>
+            </div>
+            <div className="hidden tablet:block">Add Habit</div>
+          </div>
         </div>
-        <div className="btm-nav">
+
+        {/* Bottom Nav */}
+        <div className="btm-nav tablet:hidden">
           <button className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
