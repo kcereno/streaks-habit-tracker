@@ -6,11 +6,15 @@ import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 
 import { months } from '../../data/data';
+import Calender from '../Calendar/Calender';
+import { getDaysInMonth } from '../../utils/functions';
 
 function HabitGridItem() {
   const { editMode } = useContext(AppContext);
   const [monthNumber, setMonthNumber] = useState(0);
   const [year, setYear] = useState(2023);
+
+  const daysInMonth = getDaysInMonth(monthNumber, year);
 
   useEffect(() => {
     const today = new Date();
@@ -65,73 +69,7 @@ function HabitGridItem() {
             </button>
           </div>
           {/* Grid Calendar */}
-          {/* <div className="flex justify-center mt-2">
-            <div className="flex flex-col gap-2 text-center text-white mt-2">
-              <div className="flex flex-wrap gap-2">
-                {days
-                  .filter((day) => day >= 1 && day <= 7)
-                  .map((day) => (
-                    <h1
-                      key={day}
-                      className="flex items-center justify-center rounded-full  p-1 bg-yellow-500 w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px]"
-                    >
-                      {day}
-                    </h1>
-                  ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {days
-                  .filter((day) => day >= 8 && day <= 14)
-                  .map((day) => (
-                    <h1
-                      key={day}
-                      className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px"
-                    >
-                      {day}
-                    </h1>
-                  ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {days
-                  .filter((day) => day >= 15 && day <= 21)
-                  .map((day) => (
-                    <h1
-                      key={day}
-                      className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px"
-                    >
-                      {day}
-                    </h1>
-                  ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {days
-                  .filter((day) => day >= 22 && day <= 28)
-                  .map((day) => (
-                    <h1
-                      key={day}
-                      className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500  text-center w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px"
-                    >
-                      {day}
-                    </h1>
-                  ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {days.map((day) => {
-                  if (day >= 28) {
-                    return (
-                      <h1
-                        key={day}
-                        className="flex items-center justify-center rounded-full p-1.5 bg-yellow-500 text-center w-[30px] h-[30px] mobile-medium:w-[35px] mobile-medium:h-[35px] mobile-large:w-[40px] mobile-large:h-[40px"
-                      >
-                        {day}
-                      </h1>
-                    );
-                  }
-                  return null;
-                })}
-              </div>
-            </div>
-          </div> */}
+          <Calender totalDays={daysInMonth} />
         </div>
       </div>
     </div>

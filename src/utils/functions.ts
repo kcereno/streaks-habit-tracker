@@ -9,3 +9,18 @@ export const getFrequencyText = (frequency: number): string => {
 };
 
 export const getCurrentMonth = () => months[new Date().getMonth()];
+
+export const getDaysInMonth = (month: number, year: number) => {
+  if (month === 1) {
+    // February
+    if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+      return 29; // Leap year
+    }
+    return 28; // Common year
+  }
+  if ([3, 5, 8, 10].includes(month)) {
+    // April, June, September, November
+    return 30;
+  }
+  return 31; // January, March, May, July, August, October, December
+};
