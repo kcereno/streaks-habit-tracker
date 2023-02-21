@@ -23,10 +23,7 @@ function Navbar() {
             </p>
           </div>
           <div className="">
-            <button
-              className="btn btn-ghost btn-circle text-success"
-              type="button"
-            >
+            <button className="btn btn-ghost text-success" type="button">
               Add
             </button>
             {editMode ? (

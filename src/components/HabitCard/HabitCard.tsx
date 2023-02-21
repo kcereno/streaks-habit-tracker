@@ -31,7 +31,7 @@ function HabitCard({ habit, updateHabit }: Props) {
   };
 
   return (
-    <div className="card w-2/5 grow  card-compact bg-base-200 shadow-xl tablet:w-60 ">
+    <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
         <div className="flex justify-end">
           <button
