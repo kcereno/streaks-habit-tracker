@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable arrow-body-style */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Day from '../Day/Day';
 import { getDaysInMonth, generateDateId } from '../../utils/functions';
 import { HabitI } from '../../models/models';
@@ -20,11 +18,8 @@ function Calender({ habit, date: { month, year } }: Props) {
   const { updateHabit } = useContext(AppContext);
   const daysInMonth = getDaysInMonth(month, year);
 
-  let days: number[] = [];
+  const days = Array.from({ length: daysInMonth }, (_, index) => index + 1);
 
-  for (let i = 1; i <= daysInMonth; i++) {
-    days.push(i);
-  }
   const toggleCompleted = (id: string) => {
     const logEntry = habit.logs.find((log) => log.date === id);
 
