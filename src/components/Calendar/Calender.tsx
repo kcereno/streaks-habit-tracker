@@ -26,16 +26,25 @@ function Calender({ habit, date: { month, year } }: Props) {
     days.push(i);
   }
   const toggleCompleted = (id: string) => {
-    const updatedLogs = habit.logs.map((logEntry) => {
-      if (logEntry.date === id) {
-        return {
-          ...logEntry,
-          completed: !logEntry.completed,
-        };
-      }
+    const logEntry = habit.logs.find((log) => log.date === id);
 
-      return logEntry;
-    });
+    let updatedLogs;
+    if (logEntry) {
+      updatedLogs = habit.logs.map((log) => {
+        if (log.date === id) return { ...log, completed: !log.completed };
+
+        return log;
+      });
+    } else {
+      updatedLogs = [
+        ...habit.logs,
+        {
+          date: id,
+          completed: true,
+        },
+      ];
+    }
+
     const updatedHabit = { ...habit, logs: updatedLogs };
     updateHabit(updatedHabit);
   };
