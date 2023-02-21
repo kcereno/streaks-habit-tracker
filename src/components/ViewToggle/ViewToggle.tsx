@@ -1,11 +1,9 @@
-import { ViewTypes } from '../../models/models';
+import { useContext } from 'react';
+import AppContext from '../../store/AppContext/app-context';
 
-interface Props {
-  view: ViewTypes;
-  updateView: (updatedView: ViewTypes) => void;
-}
+function ViewToggle() {
+  const { view, updateView } = useContext(AppContext);
 
-function ViewToggle({ view, updateView }: Props) {
   const handleGridButtonClick = () => {
     updateView('grid');
   };

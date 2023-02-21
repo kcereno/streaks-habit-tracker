@@ -24,6 +24,7 @@ function HabitCard({ habit, updateHabit }: Props) {
 
     const updatedHabit = { ...habit, progress: newProgressValue };
     updateHabit(updatedHabit);
+    console.log('handlePlusButtonClick ~ updatedHabit', updatedHabit);
   };
   const handleMinusButtonClick = () => {
     const newProgressValue = progress - 1;

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import AppContext, { AppContextI } from './app-context';
-import { HabitI } from '../../models/models';
+import { HabitI, ViewTypes } from '../../models/models';
 import mockHabits from '../../data/data';
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
 function AppContextProvider({ children }: Props) {
   const [habits, setHabits] = useState<HabitI[]>(mockHabits);
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [view, setView] = useState<ViewTypes>('board');
 
   const updateHabit = (updatedHabit: HabitI) => {
     const updatedHabits = habits.map((habit) => {
@@ -19,14 +20,21 @@ function AppContextProvider({ children }: Props) {
     setHabits(updatedHabits);
   };
 
+  const updateView = (updatedView: ViewTypes) => {
+    setView(updatedView);
+    // setCurrentPage(1);
+  };
+
   const memoizedAppContextValue: AppContextI = useMemo(
     () => ({
       habits,
       updateHabit,
+      view,
+      updateView,
       editMode,
       setEditMode,
     }),
-    [editMode, setEditMode],
+    [editMode, setEditMode, habits, view, updateView],
   );
 
   return (

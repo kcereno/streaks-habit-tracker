@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useState } from 'react';
 import HabitBoard from './components/HabitBoard/HabitBoard';
 import HabitGrid from './components/HabitGrid/HabitGrid';
@@ -11,15 +13,11 @@ import './App.css';
 import AppContext from './store/AppContext/app-context';
 
 function App() {
-  const { habits, updateHabit } = useContext(AppContext);
-  const [view, setView] = useState<ViewTypes>('board');
+  const { habits, updateHabit, view, updateView } = useContext(AppContext);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   // Functions
-  const updateView = (updatedView: ViewTypes) => {
-    setView(updatedView);
-    setCurrentPage(1);
-  };
 
   const updateCurrentPage = (updatedPage: number) => {
     setCurrentPage(updatedPage);
@@ -32,24 +30,24 @@ function App() {
   };
 
   // Variables
-  const maxPages = Math.ceil(habits.length / (view === 'board' ? 6 : 4));
+  // const maxPages = Math.ceil(habits.length / (view === 'board' ? 6 : 4));
 
   const displayedHabits = getDisplayedHabits();
 
   return (
     <Layout>
-      <ViewToggle view={view} updateView={updateView} />
+      <ViewToggle />
       {view === 'board' && (
         <HabitBoard habits={displayedHabits} updateHabit={updateHabit} />
       )}
       {view === 'grid' && (
         <HabitGrid habits={displayedHabits} updateHabit={updateHabit} />
       )}
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         updateCurrentPage={updateCurrentPage}
         maxPages={maxPages}
-      />
+      /> */}
     </Layout>
   );
 }
