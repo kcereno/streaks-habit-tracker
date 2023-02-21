@@ -11,14 +11,14 @@ export const getFrequencyText = (frequency: number): string => {
 export const getCurrentMonth = () => months[new Date().getMonth()];
 
 export const getDaysInMonth = (month: number, year: number) => {
-  if (month === 1) {
+  if (month === 2) {
     // February
     if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
       return 29; // Leap year
     }
     return 28; // Common year
   }
-  if ([3, 5, 8, 10].includes(month)) {
+  if ([4, 6, 9, 11].includes(month)) {
     // April, June, September, November
     return 30;
   }

@@ -37,7 +37,9 @@ function Calender({ habitLog, date: { month, year } }: Props) {
         <div className="flex flex-wrap gap-2 w-[258px] mobile-medium:w-[293px] mobile-large:w-[328px]">
           {days.map((day) => {
             const dateId = generateDateId(year, month, day);
-            const isCompleted = dateId === '2023-01-01';
+            const isCompleted = habitLog.some(
+              (habit) => habit.date === dateId && habit.completed,
+            );
 
             return <Day key={day} id="4" day={day} completed={isCompleted} />;
           })}
