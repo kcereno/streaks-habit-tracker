@@ -1,26 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/button-has-type */
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { months } from '../../data/data';
 import Calender from '../Calendar/Calender';
+import { HabitI } from '../../models/models';
 
-function HabitGridItem() {
+interface Props {
+  habit: HabitI;
+}
+
+function HabitGridItem({ habit }: Props) {
   const { editMode } = useContext(AppContext);
-  const [month, setMonth] = useState(0);
+  const [month, setMonth] = useState(2);
   const [year, setYear] = useState(2023);
 
-  useEffect(() => {
-    const today = new Date();
-    setMonth(today.getMonth());
-    setYear(today.getFullYear());
-  }, []);
+  const { name, logs } = habit;
 
   const handlePrevMonthButtonClick = () => {
-    if (month === 0) {
-      setMonth(11);
+    if (month === 1) {
+      setMonth(12);
       setYear(year - 1);
     } else {
       setMonth(month - 1);
@@ -28,8 +26,8 @@ function HabitGridItem() {
   };
 
   const handleNextMonthButtonClick = () => {
-    if (month === 11) {
-      setMonth(0);
+    if (month === 12) {
+      setMonth(1);
       setYear(year + 1);
     } else {
       setMonth(month + 1);
@@ -40,14 +38,17 @@ function HabitGridItem() {
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
       {editMode && (
         <div className="flex justify-end">
-          <button className="btn btn-ghost text-accent text-center text-xs">
+          <button
+            type="button"
+            className="btn btn-ghost text-accent text-center text-xs"
+          >
             Select
           </button>
         </div>
       )}
       {/* Content Container */}
       <div className="py-5 tablet:px-4">
-        <h2 className="font-bold text-3xl text-center">Journal</h2>
+        <h2 className="font-bold text-3xl text-center">{name}</h2>
         <div className="flex justify-center gap-4 text-slate-500">
           <p>Current: 4</p>
           <p>Longest:10</p>
@@ -56,16 +57,24 @@ function HabitGridItem() {
         <div className="mt-4 ">
           {/* Calendar Controls */}
           <div className="flex justify-center gap-4">
-            <button className="" onClick={handlePrevMonthButtonClick}>
+            <button
+              type="button"
+              className=""
+              onClick={handlePrevMonthButtonClick}
+            >
               «
             </button>
             <div className="text-center">{`${months[month]} ${year}`}</div>
-            <button className="" onClick={handleNextMonthButtonClick}>
+            <button
+              type="button"
+              className=""
+              onClick={handleNextMonthButtonClick}
+            >
               »
             </button>
           </div>
           {/* Grid Calendar */}
-          <Calender date={{ month, year }} />
+          <Calender date={{ month, year }} habitLog={habit.logs} />
         </div>
       </div>
     </div>

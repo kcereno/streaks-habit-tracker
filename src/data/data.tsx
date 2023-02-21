@@ -8,13 +8,13 @@ const mockHabits: HabitI[] = [
     progress: 1,
     goal: 1,
     logs: [
-      { date: '2022-02-14', completed: true },
-      { date: '2022-02-15', completed: true },
-      { date: '2022-02-16', completed: false },
-      { date: '2022-02-17', completed: true },
-      { date: '2022-02-18', completed: false },
-      { date: '2022-02-19', completed: true },
-      { date: '2022-02-20', completed: false },
+      { date: '2023-02-14', completed: true },
+      { date: '2023-02-15', completed: true },
+      { date: '2023-02-16', completed: false },
+      { date: '2023-02-17', completed: true },
+      { date: '2023-02-18', completed: false },
+      { date: '2023-02-19', completed: true },
+      { date: '2023-02-20', completed: false },
     ],
   },
   {
@@ -107,6 +107,7 @@ const mockHabits: HabitI[] = [
 export default mockHabits;
 
 export const months = [
+  '',
   'January',
   'February',
   'March',

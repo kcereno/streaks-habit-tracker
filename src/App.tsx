@@ -48,7 +48,9 @@ function App() {
       {view === 'board' && (
         <HabitBoard habits={displayedHabits} updateHabit={updateHabit} />
       )}
-      {view === 'grid' && <HabitGrid />}
+      {view === 'grid' && (
+        <HabitGrid habits={displayedHabits} updateHabit={updateHabit} />
+      )}
       <Pagination
         currentPage={currentPage}
         updateCurrentPage={updateCurrentPage}

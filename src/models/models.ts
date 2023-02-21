@@ -7,7 +7,7 @@ export interface HabitI {
   logs: HabitLogI[];
 }
 
-interface HabitLogI {
+export interface HabitLogI {
   date: string;
   completed: boolean;
 }
