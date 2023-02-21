@@ -4,7 +4,7 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import Day from '../Day/Day';
-import { getDaysInMonth } from '../../utils/functions';
+import { getDaysInMonth, generateDateId } from '../../utils/functions';
 import { HabitLogI } from '../../models/models';
 
 interface Props {
@@ -23,13 +23,6 @@ function Calender({ habitLog, date: { month, year } }: Props) {
   for (let i = 1; i <= daysInMonth; i++) {
     days.push(i);
   }
-
-  const generateDateId = (y: number, m: number, d: number) => {
-    const convertedDay = d.toString().length === 1 ? `0${d}` : d;
-    const convertedMonth = m.toString().length === 1 ? `0${m}` : m;
-
-    return `${y}-${convertedMonth}-${convertedDay}`;
-  };
 
   return (
     <div className="flex justify-center mt-2">

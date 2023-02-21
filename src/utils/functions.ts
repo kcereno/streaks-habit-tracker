@@ -24,3 +24,10 @@ export const getDaysInMonth = (month: number, year: number) => {
   }
   return 31; // January, March, May, July, August, October, December
 };
+
+export const generateDateId = (year: number, month: number, day: number) => {
+  const convertedDay = day.toString().length === 1 ? `0${day}` : day;
+  const convertedMonth = month.toString().length === 1 ? `0${month}` : month;
+
+  return `${year}-${convertedMonth}-${convertedDay}`;
+};
