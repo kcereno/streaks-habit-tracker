@@ -1,11 +1,11 @@
 /* eslint-disable react/button-has-type */
-interface Props {
-  currentPage: number;
-  updateCurrentPage: (updatedPage: number) => void;
-  maxPages: number;
-}
 
-function Pagination({ currentPage, updateCurrentPage, maxPages }: Props) {
+import { useContext } from 'react';
+import AppContext from '../../store/AppContext/app-context';
+
+function Pagination() {
+  const { currentPage, updateCurrentPage, maxPages } = useContext(AppContext);
+
   const handlePreviousButtonClick = () => {
     updateCurrentPage(currentPage - 1);
   };

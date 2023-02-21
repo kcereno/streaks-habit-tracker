@@ -11,6 +11,15 @@ function AppContextProvider({ children }: Props) {
   const [habits, setHabits] = useState<HabitI[]>(mockHabits);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [view, setView] = useState<ViewTypes>('board');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const maxPages = Math.ceil(habits.length / (view === 'board' ? 6 : 4));
+
+  const getDisplayedHabits = () => {
+    const startIndex = (currentPage - 1) * (view === 'board' ? 6 : 4);
+    const endIndex = startIndex + (view === 'board' ? 6 : 4);
+    return habits.slice(startIndex, endIndex);
+  };
 
   const updateHabit = (updatedHabit: HabitI) => {
     const updatedHabits = habits.map((habit) => {
@@ -22,19 +31,26 @@ function AppContextProvider({ children }: Props) {
 
   const updateView = (updatedView: ViewTypes) => {
     setView(updatedView);
-    // setCurrentPage(1);
+    setCurrentPage(1);
+  };
+
+  const updateCurrentPage = (updatedPage: number) => {
+    setCurrentPage(updatedPage);
   };
 
   const memoizedAppContextValue: AppContextI = useMemo(
     () => ({
-      habits,
+      habits: getDisplayedHabits(),
       updateHabit,
       view,
       updateView,
       editMode,
       setEditMode,
+      currentPage,
+      updateCurrentPage,
+      maxPages,
     }),
-    [editMode, setEditMode, habits, view, updateView],
+    [editMode, habits, view, currentPage, maxPages],
   );
 
   return (

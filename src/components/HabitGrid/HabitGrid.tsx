@@ -2,17 +2,15 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
+import HabitCard from '../HabitCard/HabitCard';
+import AppContext from '../../store/AppContext/app-context';
 
 import HabitGridItem from '../HabitGridItem/HabitGridItem';
 import { HabitI } from '../../models/models';
 
-interface Props {
-  habits: HabitI[];
-  updateHabit: (updatedHabit: HabitI) => void;
-}
-
-function HabitGrid({ habits, updateHabit }: Props) {
+function HabitGrid() {
+  const { habits, updateHabit } = useContext(AppContext);
   return (
     <section className="" data-testid="habit-grid">
       <div className="habit-grid-container flex flex-wrap gap-4">

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 

@@ -8,6 +8,9 @@ export interface AppContextI {
   setEditMode: (editMode: boolean) => void;
   view: ViewTypes;
   updateView: (view: ViewTypes) => void;
+  currentPage: number;
+  updateCurrentPage: (updatedPage: number) => void;
+  maxPages: number;
 }
 
 const AppContext = createContext<AppContextI>({} as AppContextI);

@@ -1,17 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useContext } from 'react';
 // import HabitGridItem from './HabitBoardItem/HabitBoardItem';
 import { HabitI } from '../../models/models';
 import HabitCard from '../HabitCard/HabitCard';
+import AppContext from '../../store/AppContext/app-context';
 
-interface Props {
-  habits: HabitI[];
-  updateHabit: (updatedHabit: HabitI) => void;
-}
+function HabitBoard() {
+  const { habits, updateHabit } = useContext(AppContext);
 
-function HabitBoard({ habits, updateHabit }: Props) {
   const habitCards = habits.map((habit) => (
     <HabitCard key={habit.id} habit={habit} updateHabit={updateHabit} />
   ));
