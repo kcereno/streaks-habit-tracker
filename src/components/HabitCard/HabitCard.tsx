@@ -55,7 +55,9 @@ function HabitCard({ habit, updateHabit }: Props) {
         <div className="mt-5 text-center">
           <p>{`${progress}/${goal}`}</p>
           <progress
-            className="progress progress-primary w-3/4"
+            className={`progress ${
+              progressPercentage === 100 ? 'progress-success' : 'progress-error'
+            } w-3/4`}
             value={progressPercentage}
             max="100"
           />

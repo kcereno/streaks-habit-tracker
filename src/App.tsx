@@ -22,3 +22,7 @@ function App() {
 }
 
 export default App;
+
+// Add todays date somewhere
+// Create logic to create a log for today
+// have board data match grid data for today
