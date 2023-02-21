@@ -1,22 +1,32 @@
 import React, { useMemo, useState } from 'react';
 import AppContext, { AppContextI } from './app-context';
+import { HabitI } from '../../models/models';
+import mockHabits from '../../data/data';
 
 interface Props {
   children: React.ReactNode;
 }
 
 function AppContextProvider({ children }: Props) {
-  const [view, setView] = useState<string>('board');
+  const [habits, setHabits] = useState<HabitI[]>(mockHabits);
   const [editMode, setEditMode] = useState<boolean>(false);
+
+  const updateHabit = (updatedHabit: HabitI) => {
+    const updatedHabits = habits.map((habit) => {
+      if (habit.id === updatedHabit.id) return updatedHabit;
+      return habit;
+    });
+    setHabits(updatedHabits);
+  };
 
   const memoizedAppContextValue: AppContextI = useMemo(
     () => ({
-      view,
-      setView,
+      habits,
+      updateHabit,
       editMode,
       setEditMode,
     }),
-    [view, setView, editMode, setEditMode],
+    [editMode, setEditMode],
   );
 
   return (

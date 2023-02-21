@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { ViewTypes } from '../../models/models';
+import { HabitI } from '../../models/models';
 
 export interface AppContextI {
-  view: string;
-  setView: (updatedView: ViewTypes) => void;
+  habits: HabitI[];
+  updateHabit: (updatedHabit: HabitI) => void;
   editMode: boolean;
   setEditMode: (editMode: boolean) => void;
 }

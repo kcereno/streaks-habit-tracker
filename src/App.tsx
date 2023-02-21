@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import HabitBoard from './components/HabitBoard/HabitBoard';
 import HabitGrid from './components/HabitGrid/HabitGrid';
 import ViewToggle from './components/ViewToggle/ViewToggle';
 import Pagination from './components/Pagination/Pagination';
 import Layout from './layout/Layout/Layout';
-import mockHabits from './data/data';
-import { HabitI, ViewTypes } from './models/models';
+
+import { ViewTypes } from './models/models';
+
 import './App.css';
+import AppContext from './store/AppContext/app-context';
 
 function App() {
-  const [habits, setHabits] = useState(mockHabits);
+  const { habits, updateHabit } = useContext(AppContext);
   const [view, setView] = useState<ViewTypes>('board');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -17,14 +19,6 @@ function App() {
   const updateView = (updatedView: ViewTypes) => {
     setView(updatedView);
     setCurrentPage(1);
-  };
-
-  const updateHabit = (updatedHabit: HabitI) => {
-    const updatedHabits = habits.map((habit) => {
-      if (habit.id === updatedHabit.id) return updatedHabit;
-      return habit;
-    });
-    setHabits(updatedHabits);
   };
 
   const updateCurrentPage = (updatedPage: number) => {

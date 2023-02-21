@@ -33,7 +33,6 @@ function Calender({ habitLog, date: { month, year } }: Props) {
             const isCompleted = habitLog.some(
               (habit) => habit.date === dateId && habit.completed,
             );
-
             return <Day key={day} id="4" day={day} completed={isCompleted} />;
           })}
         </div>
