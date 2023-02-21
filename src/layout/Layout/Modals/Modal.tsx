@@ -36,7 +36,14 @@ function Modal() {
                 <label className="label">
                   <span className="label-text">Select an emoji as an icon</span>
                 </label>
-                <EmojiPicker theme={Theme.DARK} width="100%" />
+                <EmojiPicker
+                  theme={Theme.DARK}
+                  width="100%"
+                  previewConfig={{
+                    defaultCaption: 'Pick one!',
+                    defaultEmoji: '1f92a', // 🤪
+                  }}
+                />
               </div>
             </div>
           </form>
