@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import HabitBoard from './components/HabitBoard/HabitBoard';
 import HabitGrid from './components/HabitGrid/HabitGrid';
@@ -14,6 +16,7 @@ function App() {
   return (
     <Layout>
       <ViewToggle />
+
       {view === 'board' && <HabitBoard />}
       {view === 'grid' && <HabitGrid />}
       <Pagination />

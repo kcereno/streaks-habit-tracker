@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 
@@ -24,7 +25,7 @@ function Navbar() {
           </div>
           <div className="">
             <button className="btn btn-ghost text-success" type="button">
-              Add
+              <label htmlFor="modal">Add</label>
             </button>
             {editMode ? (
               <button
