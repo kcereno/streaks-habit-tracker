@@ -1,7 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/button-has-type */
-
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
@@ -14,7 +10,9 @@ interface Props {
 
 function HabitCard({ habit, updateHabit }: Props) {
   const { editMode } = useContext(AppContext);
-  const { id, icon, name, progress, goal } = habit;
+
+  // eslint-disable-next-line object-curly-newline
+  const { icon, name, progress, goal } = habit;
 
   const progressPercentage = (progress / goal) * 100;
   const frequencyText = getFrequencyText(goal);
@@ -24,7 +22,6 @@ function HabitCard({ habit, updateHabit }: Props) {
 
     const updatedHabit = { ...habit, progress: newProgressValue };
     updateHabit(updatedHabit);
-    console.log('handlePlusButtonClick ~ updatedHabit', updatedHabit);
   };
   const handleMinusButtonClick = () => {
     const newProgressValue = progress - 1;
@@ -37,7 +34,10 @@ function HabitCard({ habit, updateHabit }: Props) {
     <div className="card w-2/5 grow  card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
         <div className="flex justify-end">
-          <button className="btn btn-ghost text-accent text-center text-xs">
+          <button
+            className="btn btn-ghost text-accent text-center text-xs"
+            type="button"
+          >
             Select
           </button>
         </div>

@@ -2,20 +2,22 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
-import React from 'react';
+import React, { useContext } from 'react';
 import Day from '../Day/Day';
 import { getDaysInMonth, generateDateId } from '../../utils/functions';
-import { HabitLogI } from '../../models/models';
+import { HabitI } from '../../models/models';
+import AppContext from '../../store/AppContext/app-context';
 
 interface Props {
   date: {
     month: number;
     year: number;
   };
-  habitLog: HabitLogI[];
+  habit: HabitI;
 }
 
-function Calender({ habitLog, date: { month, year } }: Props) {
+function Calender({ habit, date: { month, year } }: Props) {
+  const { updateHabit } = useContext(AppContext);
   const daysInMonth = getDaysInMonth(month, year);
 
   let days: number[] = [];
@@ -23,6 +25,20 @@ function Calender({ habitLog, date: { month, year } }: Props) {
   for (let i = 1; i <= daysInMonth; i++) {
     days.push(i);
   }
+  const toggleCompleted = (id: string) => {
+    const updatedLogs = habit.logs.map((logEntry) => {
+      if (logEntry.date === id) {
+        return {
+          ...logEntry,
+          completed: !logEntry.completed,
+        };
+      }
+
+      return logEntry;
+    });
+    const updatedHabit = { ...habit, logs: updatedLogs };
+    updateHabit(updatedHabit);
+  };
 
   return (
     <div className="flex justify-center mt-2">
@@ -30,10 +46,19 @@ function Calender({ habitLog, date: { month, year } }: Props) {
         <div className="flex flex-wrap gap-2 w-[258px] mobile-medium:w-[293px] mobile-large:w-[328px]">
           {days.map((day) => {
             const dateId = generateDateId(year, month, day);
-            const isCompleted = habitLog.some(
-              (habit) => habit.date === dateId && habit.completed,
+            const isCompleted = habit.logs.some(
+              (logEntry) => logEntry.date === dateId && logEntry.completed,
             );
-            return <Day key={day} id="4" day={day} completed={isCompleted} />;
+
+            return (
+              <Day
+                key={day}
+                id={dateId}
+                day={day}
+                completed={isCompleted}
+                toggleCompleted={toggleCompleted}
+              />
+            );
           })}
         </div>
       </div>

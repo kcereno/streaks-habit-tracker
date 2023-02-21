@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 
@@ -25,7 +23,9 @@ function Pagination() {
         >
           «
         </button>
-        <button className="btn">{currentPage}</button>
+        <button className="btn" type="button">
+          {currentPage}
+        </button>
         <button
           className="btn"
           type="button"

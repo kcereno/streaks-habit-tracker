@@ -74,7 +74,7 @@ function HabitGridItem({ habit }: Props) {
             </button>
           </div>
           {/* Grid Calendar */}
-          <Calender date={{ month, year }} habitLog={habit.logs} />
+          <Calender date={{ month, year }} habit={habit} />
         </div>
       </div>
     </div>

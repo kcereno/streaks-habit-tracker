@@ -1,9 +1,4 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/button-has-type */
-import React, { useContext } from 'react';
-// import HabitGridItem from './HabitBoardItem/HabitBoardItem';
-import { HabitI } from '../../models/models';
+import { useContext } from 'react';
 import HabitCard from '../HabitCard/HabitCard';
 import AppContext from '../../store/AppContext/app-context';
 
