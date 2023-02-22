@@ -21,6 +21,8 @@ function AppContextProvider({ children }: Props) {
     return habits.slice(startIndex, endIndex);
   };
 
+  const addHabit = (newHabit: HabitI) => setHabits([...habits, newHabit]);
+
   const updateHabit = (updatedHabit: HabitI) => {
     const updatedHabits = habits.map((habit) => {
       if (habit.id === updatedHabit.id) return updatedHabit;
@@ -42,6 +44,7 @@ function AppContextProvider({ children }: Props) {
     () => ({
       habits: getDisplayedHabits(),
       updateHabit,
+      addHabit,
       view,
       updateView,
       editMode,

@@ -5,6 +5,7 @@ export interface AppContextI {
   habits: HabitI[];
   updateHabit: (updatedHabit: HabitI) => void;
   editMode: boolean;
+  addHabit: (habit: HabitI) => void;
   setEditMode: (editMode: boolean) => void;
   view: ViewTypes;
   updateView: (view: ViewTypes) => void;
