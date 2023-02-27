@@ -22,7 +22,7 @@ function AddHabitModal() {
     }
   }, [habitName, habitGoal, habitIcon]);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newHabit: HabitI = {
       id: generateId(habitName.value),
