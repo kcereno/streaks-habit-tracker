@@ -2,7 +2,7 @@ import { HabitI } from '../models/models';
 
 const mockHabits: HabitI[] = [
   {
-    id: 1,
+    id: '1',
     icon: '🏋️‍♂️',
     name: 'Exercise',
     progress: 1,
@@ -70,7 +70,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     icon: '📚',
     name: 'Read',
     progress: 2,
@@ -138,7 +138,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     icon: '🥗',
     name: 'Eat Healthy',
     progress: 1,
@@ -206,7 +206,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     icon: '🎨',
     name: 'Draw',
     progress: 1,
@@ -274,7 +274,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 5,
+    id: '5',
     icon: '🚰',
     name: 'Drink Water',
     progress: 2,
@@ -287,7 +287,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 6,
+    id: '6',
     icon: '🌅',
     name: 'Meditate',
     progress: 1,
@@ -298,7 +298,7 @@ const mockHabits: HabitI[] = [
     ],
   },
   {
-    id: 7,
+    id: '7',
     icon: '🎸',
     name: 'Practice Guitar',
     progress: 4,

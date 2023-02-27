@@ -1,5 +1,5 @@
 export interface HabitI {
-  id: number;
+  id: string;
   icon: string;
   name: string;
   progress: number;
@@ -13,3 +13,11 @@ export interface HabitLogI {
 }
 
 export type ViewTypes = 'board' | 'grid';
+
+export type HabitFormFields = 'habitName' | 'habitGoal' | 'habitIcon';
+
+export interface HabitInputI {
+  value: string;
+  touched: boolean;
+  valid: boolean;
+}

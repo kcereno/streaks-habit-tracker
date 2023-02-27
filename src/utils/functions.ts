@@ -31,3 +31,17 @@ export const generateDateId = (year: number, month: number, day: number) => {
 
   return `${year}-${convertedMonth}-${convertedDay}`;
 };
+
+export const validateInput = (
+  input: string,
+  minLength: number,
+  maxLengthNumber: number,
+) => {
+  const updatedInput = input.replace(/\s/g, '');
+  return updatedInput.length >= minLength && input.length <= maxLengthNumber;
+};
+
+export const generateId = (habitName: string) => {
+  const timestamp = new Date().getTime();
+  return habitName + timestamp;
+};

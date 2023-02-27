@@ -16,7 +16,6 @@ function App() {
   return (
     <Layout>
       <ViewToggle />
-
       {view === 'board' && <HabitBoard />}
       {view === 'grid' && <HabitGrid />}
       <Pagination />
