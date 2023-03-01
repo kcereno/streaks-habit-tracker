@@ -12,6 +12,11 @@ function AppContextProvider({ children }: Props) {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [view, setView] = useState<ViewTypes>('board');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedHabit, setSelectedHabit] = useState<HabitI | null>(null);
+
+  const updateSelectedHabt = (habit: HabitI) => {
+    setSelectedHabit(habit);
+  };
 
   const maxPages = Math.ceil(habits.length / (view === 'board' ? 6 : 4));
 
@@ -52,8 +57,10 @@ function AppContextProvider({ children }: Props) {
       currentPage,
       updateCurrentPage,
       maxPages,
+      selectedHabit,
+      updateSelectedHabt,
     }),
-    [editMode, habits, view, currentPage, maxPages],
+    [editMode, habits, view, currentPage, maxPages, selectedHabit],
   );
 
   return (
