@@ -1,13 +1,13 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext, useState, useEffect } from 'react';
-import AppContext from '../../../../store/AppContext/app-context';
-import AddModalInput from './AddHabitModalInput';
-import { generateId } from '../../../../utils/functions';
-import { HabitI, HabitInputI } from '../../../../models/models';
-import { DEFAULT_HABIT_INPUT } from '../../../../data/default';
+import AppContext from '../../../store/AppContext/app-context';
+import ModalInput from './ModalInput';
+import { generateId } from '../../../utils/functions';
+import { HabitI, HabitInputI } from '../../../models/models';
+import { DEFAULT_HABIT_INPUT } from '../../../data/default';
 
-function AddHabitModal() {
+function Modal() {
   const [habitName, setHabitName] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
   const [habitGoal, setHabitGoal] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
   const [habitIcon, setHabitIcon] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
@@ -78,7 +78,7 @@ function AddHabitModal() {
         <div className="modal-box">
           <h1 className="text-xl font-bold">{!editMode ? 'Add Habit' : 'Edit Habit'}</h1>
           <form onSubmit={handleSubmit}>
-            <AddModalInput
+            <ModalInput
               label="What do you want to do?"
               type="text"
               characterLength={{ min: 1, max: 20 }}
@@ -86,7 +86,7 @@ function AddHabitModal() {
               updateHabitData={setHabitName}
             />
 
-            <AddModalInput
+            <ModalInput
               label="How many times a day?"
               type="number"
               characterLength={{ min: 1, max: 3 }}
@@ -94,7 +94,7 @@ function AddHabitModal() {
               updateHabitData={setHabitGoal}
             />
 
-            <AddModalInput
+            <ModalInput
               label="Select ONE letter or emoji to be the habit icon?"
               type="text"
               characterLength={{ min: 1, max: 2 }}
@@ -126,4 +126,4 @@ function AddHabitModal() {
   );
 }
 
-export default AddHabitModal;
+export default Modal;

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { validateInput } from '../../../../utils/functions';
-import { HabitInputI } from '../../../../models/models';
+import { validateInput } from '../../../utils/functions';
+import { HabitInputI } from '../../../models/models';
 
 interface Props {
   label: string;
@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-function AddModalInput({
+function ModalInput({
   label,
   type,
   habitData,
@@ -56,4 +56,4 @@ function AddModalInput({
   );
 }
 
-export default AddModalInput;
+export default ModalInput;

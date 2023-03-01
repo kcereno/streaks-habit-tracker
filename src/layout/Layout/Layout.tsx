@@ -1,7 +1,7 @@
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 
-import AddHabitModal from './Modals/AddHabitModal/AddHabitModal';
+import Modal from './Modal/Modal';
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ function Layout({ children }: Props) {
         <div className="max-w-[900px] ">{children}</div>
       </main>
       <Footer />
-      <AddHabitModal />
+      <Modal />
     </div>
   );
 }
