@@ -11,7 +11,7 @@ interface Props {
 }
 
 function HabitCard({ habit, updateHabit }: Props) {
-  const { editMode, updateSelectedHabit } = useContext(AppContext);
+  const { editMode, updateSelectedHabit, deleteHabit } = useContext(AppContext);
 
   // eslint-disable-next-line object-curly-newline
   const { icon, name, progress, goal } = habit;
@@ -36,6 +36,10 @@ function HabitCard({ habit, updateHabit }: Props) {
     updateHabit(updatedHabit);
   };
 
+  const handleDeleteClick = () => {
+    deleteHabit(habit.id);
+  };
+
   return (
     <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
@@ -49,7 +53,7 @@ function HabitCard({ habit, updateHabit }: Props) {
           <button
             className="btn btn-ghost text-error text-center text-xs"
             type="button"
-            onClick={handleSelectClick}>
+            onClick={handleDeleteClick}>
             Delete
           </button>
         </div>

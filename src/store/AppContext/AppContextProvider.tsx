@@ -45,6 +45,11 @@ function AppContextProvider({ children }: Props) {
     setCurrentPage(updatedPage);
   };
 
+  const deleteHabit = (habitId: string) => {
+    const updatedHabits = habits.filter((habit) => habitId !== habit.id);
+    setHabits(updatedHabits);
+  };
+
   const memoizedAppContextValue: AppContextI = useMemo(
     () => ({
       habits: getDisplayedHabits(),
@@ -52,6 +57,7 @@ function AppContextProvider({ children }: Props) {
       addHabit,
       view,
       updateView,
+      deleteHabit,
       editMode,
       setEditMode,
       currentPage,
