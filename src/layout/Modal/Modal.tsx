@@ -1,11 +1,11 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext, useState, useEffect } from 'react';
-import AppContext from '../../../store/AppContext/app-context';
+import AppContext from '../../store/AppContext/app-context';
 import ModalInput from './ModalInput';
-import { generateId } from '../../../utils/functions';
-import { HabitI, HabitInputI } from '../../../models/models';
-import { DEFAULT_HABIT_INPUT } from '../../../data/default';
+import { generateId } from '../../utils/functions';
+import { HabitI, HabitInputI } from '../../models/models';
+import { DEFAULT_HABIT_INPUT } from '../../data/default';
 
 function Modal() {
   const [habitName, setHabitName] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);

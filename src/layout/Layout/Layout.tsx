@@ -1,7 +1,7 @@
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 
-import Modal from './Modal/Modal';
+import Modal from '../Modal/Modal';
 
 interface Props {
   children: React.ReactNode;
