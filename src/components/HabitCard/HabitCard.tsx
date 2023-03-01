@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
@@ -38,9 +39,18 @@ function HabitCard({ habit, updateHabit }: Props) {
   return (
     <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
-        <div className="flex justify-end">
-          <button className="btn btn-ghost text-accent text-center text-xs" type="button" onClick={handleSelectClick}>
-            <label htmlFor="modal">Select</label>
+        <div className="flex justify-between mt-2">
+          <button
+            className="btn btn-ghost  text-warning text-xs"
+            type="button"
+            onClick={handleSelectClick}>
+            <label htmlFor="modal">Edit</label>
+          </button>
+          <button
+            className="btn btn-ghost text-error text-center text-xs"
+            type="button"
+            onClick={handleSelectClick}>
+            Delete
           </button>
         </div>
       )}
@@ -48,14 +58,18 @@ function HabitCard({ habit, updateHabit }: Props) {
         {/* Habit Details */}
         <div className="text-center">
           <h1 className="text-4xl tablet:text-5xl max:text-6xl">{icon}</h1>
-          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">{name}</h2>
+          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">
+            {name}
+          </h2>
           <p className="text-gray-400 max:text-xl">{frequencyText}</p>
         </div>
         {/* Habit Progress */}
         <div className="mt-5 text-center">
           <p>{`${progress}/${goal}`}</p>
           <progress
-            className={`progress ${progressPercentage === 100 ? 'progress-success' : 'progress-error'} w-3/4`}
+            className={`progress ${
+              progressPercentage === 100 ? 'progress-success' : 'progress-error'
+            } w-3/4`}
             value={progressPercentage}
             max="100"
           />
@@ -65,16 +79,14 @@ function HabitCard({ habit, updateHabit }: Props) {
             type="button"
             className="btn btn-square btn-outline btn-sm tablet:btn-md "
             disabled={progress === 0}
-            onClick={handleMinusButtonClick}
-          >
+            onClick={handleMinusButtonClick}>
             -
           </button>
           <button
             type="button"
             className="btn btn-square  btn-outline btn-sm tablet:btn-md"
             onClick={handlePlusButtonClick}
-            disabled={progress === goal}
-          >
+            disabled={progress === goal}>
             +
           </button>
         </div>
