@@ -12,7 +12,7 @@ function AddHabitModal() {
   const [habitGoal, setHabitGoal] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
   const [habitIcon, setHabitIcon] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
 
-  const { addHabit } = useContext(AppContext);
+  const { addHabit, editMode } = useContext(AppContext);
 
   useEffect(() => {
     setFormValid(false);
@@ -50,6 +50,9 @@ function AddHabitModal() {
       <input type="checkbox" id="modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
+          <h1 className="text-xl font-bold">
+            {!editMode ? 'Add Habit' : 'Edit Habit'}
+          </h1>
           <form onSubmit={handleSubmit}>
             <AddModalInput
               label="What do you want to do?"
