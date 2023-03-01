@@ -9,13 +9,17 @@ interface Props {
 }
 
 function HabitCard({ habit, updateHabit }: Props) {
-  const { editMode } = useContext(AppContext);
+  const { editMode, updateSelectedHabt } = useContext(AppContext);
 
   // eslint-disable-next-line object-curly-newline
   const { icon, name, progress, goal } = habit;
 
   const progressPercentage = (progress / goal) * 100;
   const frequencyText = getFrequencyText(goal);
+
+  const handleSelectClick = () => {
+    updateSelectedHabt(habit);
+  };
 
   const handlePlusButtonClick = () => {
     const newProgressValue = progress + 1;
@@ -37,6 +41,7 @@ function HabitCard({ habit, updateHabit }: Props) {
           <button
             className="btn btn-ghost text-accent text-center text-xs"
             type="button"
+            onClick={handleSelectClick}
           >
             Select
           </button>

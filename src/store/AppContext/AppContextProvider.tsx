@@ -13,6 +13,7 @@ function AppContextProvider({ children }: Props) {
   const [view, setView] = useState<ViewTypes>('board');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedHabit, setSelectedHabit] = useState<HabitI | null>(null);
+  console.log('AppContextProvider ~ selectedHabit:', selectedHabit);
 
   const updateSelectedHabt = (habit: HabitI) => {
     setSelectedHabit(habit);
