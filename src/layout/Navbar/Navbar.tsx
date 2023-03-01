@@ -24,9 +24,11 @@ function Navbar() {
             </p>
           </div>
           <div className="">
-            <button className="btn btn-ghost text-success" type="button">
-              <label htmlFor="modal">Add</label>
-            </button>
+            {!editMode && (
+              <button className="btn btn-ghost text-success" type="button">
+                <label htmlFor="modal">Add</label>
+              </button>
+            )}
             {editMode ? (
               <button
                 className="btn btn-ghost text-error"
@@ -41,7 +43,7 @@ function Navbar() {
                 type="button"
                 onClick={handleEditClick}
               >
-                Edit
+                Edit / Delete
               </button>
             )}
           </div>
