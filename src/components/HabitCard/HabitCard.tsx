@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
@@ -9,7 +10,7 @@ interface Props {
 }
 
 function HabitCard({ habit, updateHabit }: Props) {
-  const { editMode, updateSelectedHabt } = useContext(AppContext);
+  const { editMode, updateSelectedHabit } = useContext(AppContext);
 
   // eslint-disable-next-line object-curly-newline
   const { icon, name, progress, goal } = habit;
@@ -18,7 +19,7 @@ function HabitCard({ habit, updateHabit }: Props) {
   const frequencyText = getFrequencyText(goal);
 
   const handleSelectClick = () => {
-    updateSelectedHabt(habit);
+    updateSelectedHabit(habit);
   };
 
   const handlePlusButtonClick = () => {
@@ -38,12 +39,8 @@ function HabitCard({ habit, updateHabit }: Props) {
     <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">
       {editMode && (
         <div className="flex justify-end">
-          <button
-            className="btn btn-ghost text-accent text-center text-xs"
-            type="button"
-            onClick={handleSelectClick}
-          >
-            Select
+          <button className="btn btn-ghost text-accent text-center text-xs" type="button" onClick={handleSelectClick}>
+            <label htmlFor="modal">Select</label>
           </button>
         </div>
       )}
@@ -51,18 +48,14 @@ function HabitCard({ habit, updateHabit }: Props) {
         {/* Habit Details */}
         <div className="text-center">
           <h1 className="text-4xl tablet:text-5xl max:text-6xl">{icon}</h1>
-          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">
-            {name}
-          </h2>
+          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">{name}</h2>
           <p className="text-gray-400 max:text-xl">{frequencyText}</p>
         </div>
         {/* Habit Progress */}
         <div className="mt-5 text-center">
           <p>{`${progress}/${goal}`}</p>
           <progress
-            className={`progress ${
-              progressPercentage === 100 ? 'progress-success' : 'progress-error'
-            } w-3/4`}
+            className={`progress ${progressPercentage === 100 ? 'progress-success' : 'progress-error'} w-3/4`}
             value={progressPercentage}
             max="100"
           />

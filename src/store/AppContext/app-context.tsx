@@ -13,7 +13,7 @@ export interface AppContextI {
   updateCurrentPage: (updatedPage: number) => void;
   maxPages: number;
   selectedHabit: HabitI | null;
-  updateSelectedHabt: (habit: HabitI) => void;
+  updateSelectedHabit: (habit: HabitI | null) => void;
 }
 
 const AppContext = createContext<AppContextI>({} as AppContextI);

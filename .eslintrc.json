@@ -5,7 +5,8 @@
     },
     "extends": [
         "airbnb",
-        "airbnb-typescript"
+        "airbnb-typescript",
+        "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -20,7 +21,8 @@
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        
     },
     "ignorePatterns":["tailwind.config.js","postcss.config.js"]
 
