@@ -1,7 +1,6 @@
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-
-import Modal from '../Modal/Modal';
+import Modals from '../Modals/Modals';
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +14,7 @@ function Layout({ children }: Props) {
         <div className="max-w-[900px] ">{children}</div>
       </main>
       <Footer />
-      <Modal />
+      <Modals />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { validateHabitInput, isEmoji } from '../../utils/functions';
-import { HabitInputI } from '../../models/models';
+import { validateHabitInput, isEmoji } from '../../../utils/functions';
+import { HabitInputI } from '../../../models/models';
 
 interface Props {
   label: string;
@@ -14,7 +14,7 @@ interface Props {
   emoji?: boolean;
 }
 
-function ModalInput({ label, type, habitData, updateHabitData, maxLength, emoji }: Props) {
+function HabitFormModalInput({ label, type, habitData, updateHabitData, maxLength, emoji }: Props) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newInput = type === 'number' ? +e.target.value : e.target.value;
     const isValid = emoji ? isEmoji(newInput as string) : validateHabitInput(newInput);
@@ -49,4 +49,4 @@ function ModalInput({ label, type, habitData, updateHabitData, maxLength, emoji 
   );
 }
 
-export default ModalInput;
+export default HabitFormModalInput;

@@ -1,13 +1,14 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext, useState, useEffect } from 'react';
-import AppContext from '../../store/AppContext/app-context';
-import ModalInput from './ModalInput';
-import { generateId } from '../../utils/functions';
-import { HabitI, HabitInputI } from '../../models/models';
-import { DEFAULT_HABIT_INPUT } from '../../data/default';
+import AppContext from '../../../store/AppContext/app-context';
 
-function Modal() {
+import { generateId } from '../../../utils/functions';
+import { HabitI, HabitInputI } from '../../../models/models';
+import { DEFAULT_HABIT_INPUT } from '../../../data/default';
+import HabitFormModalInput from './HabitFormModalInput';
+
+function HabitFormModal() {
   const [habitName, setHabitName] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
   const [habitGoal, setHabitGoal] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
   const [habitIcon, setHabitIcon] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
@@ -78,7 +79,7 @@ function Modal() {
         <div className="modal-box">
           <h1 className="text-xl font-bold">{!editMode ? 'Add Habit' : 'Edit Habit'}</h1>
           <form onSubmit={handleSubmit}>
-            <ModalInput
+            <HabitFormModalInput
               label="What do you want to do?"
               type="text"
               maxLength={20}
@@ -86,14 +87,14 @@ function Modal() {
               updateHabitData={setHabitName}
             />
 
-            <ModalInput
+            <HabitFormModalInput
               label="How many times a day?"
               type="number"
               habitData={habitGoal}
               updateHabitData={setHabitGoal}
             />
 
-            <ModalInput
+            <HabitFormModalInput
               label="Select ONE emoji to represent your habit"
               type="text"
               maxLength={2}
@@ -126,4 +127,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default HabitFormModal;
