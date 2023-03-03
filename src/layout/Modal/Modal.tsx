@@ -81,7 +81,7 @@ function Modal() {
             <ModalInput
               label="What do you want to do?"
               type="text"
-              characterLength={{ min: 1, max: 20 }}
+              maxLength={20}
               habitData={habitName}
               updateHabitData={setHabitName}
             />
@@ -89,17 +89,17 @@ function Modal() {
             <ModalInput
               label="How many times a day?"
               type="number"
-              characterLength={{ min: 1, max: 3 }}
               habitData={habitGoal}
               updateHabitData={setHabitGoal}
             />
 
             <ModalInput
-              label="Select UPTO TWO letters or ONE emoji to be the habit icon"
+              label="Select ONE emoji to represent your habit"
               type="text"
-              characterLength={{ min: 1, max: 2 }}
+              maxLength={2}
               habitData={habitIcon}
               updateHabitData={setHabitIcon}
+              emoji
             />
 
             <span className="label-text-alt">

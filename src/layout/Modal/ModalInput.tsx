@@ -1,6 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable object-curly-newline */
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { validateHabitInput } from '../../utils/functions';
+import { validateHabitInput, isEmoji } from '../../utils/functions';
 import { HabitInputI } from '../../models/models';
 
 interface Props {
@@ -9,28 +10,19 @@ interface Props {
   type: string;
   habitData: HabitInputI;
   updateHabitData: React.Dispatch<React.SetStateAction<HabitInputI>>;
-  characterLength: {
-    min: number;
-    max: number;
-  };
+  maxLength?: number;
+  emoji?: boolean;
 }
 
-function ModalInput({
-  label,
-  type,
-  habitData,
-  updateHabitData,
-  characterLength: { min, max },
-}: Props) {
+function ModalInput({ label, type, habitData, updateHabitData, maxLength, emoji }: Props) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const updatedInput = type === 'number' ? +e.target.value : e.target.value;
-
-    const inputisValid = validateHabitInput(updatedInput);
+    const newInput = type === 'number' ? +e.target.value : e.target.value;
+    const isValid = emoji ? isEmoji(newInput as string) : validateHabitInput(newInput);
 
     const updatedHabitData = {
       ...habitData,
-      value: updatedInput as string,
-      valid: inputisValid,
+      value: newInput as string,
+      valid: isValid,
     };
 
     updateHabitData(updatedHabitData);
@@ -47,7 +39,7 @@ function ModalInput({
           habitData.touched && !habitData.valid && 'input-error'
         } ${habitData.touched && habitData.valid && 'input-success'}`}
         onChange={handleInputChange}
-        maxLength={max}
+        maxLength={maxLength}
         value={habitData.value}
         onFocus={() => {
           updateHabitData({ ...habitData, touched: true });

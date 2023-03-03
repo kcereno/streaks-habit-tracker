@@ -43,3 +43,8 @@ export const generateId = (habitName: string) => {
   const timestamp = new Date().getTime();
   return habitName + timestamp;
 };
+
+export const isEmoji = (string: string) => {
+  const emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+  return emojiRegex.test(string);
+};
