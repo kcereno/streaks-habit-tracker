@@ -4,6 +4,7 @@ import AppContext from '../../store/AppContext/app-context';
 import { months } from '../../data/data';
 import Calender from '../Calendar/Calender';
 import { HabitI } from '../../models/models';
+import EditDeleteHabitButtons from '../EditDeleteHabitButtons/EditDeleteHabitButtons';
 
 interface Props {
   habit: HabitI;
@@ -36,16 +37,7 @@ function HabitGridItem({ habit }: Props) {
 
   return (
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
-      {editMode && (
-        <div className="flex justify-end">
-          <button
-            type="button"
-            className="btn btn-ghost text-accent text-center text-xs"
-          >
-            Select
-          </button>
-        </div>
-      )}
+      {editMode && <EditDeleteHabitButtons habit={habit} />}
       {/* Content Container */}
       <div className="py-5 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">{name}</h2>
@@ -57,19 +49,11 @@ function HabitGridItem({ habit }: Props) {
         <div className="mt-4 ">
           {/* Calendar Controls */}
           <div className="flex justify-center gap-4">
-            <button
-              type="button"
-              className=""
-              onClick={handlePrevMonthButtonClick}
-            >
+            <button type="button" className="" onClick={handlePrevMonthButtonClick}>
               «
             </button>
             <div className="text-center">{`${months[month]} ${year}`}</div>
-            <button
-              type="button"
-              className=""
-              onClick={handleNextMonthButtonClick}
-            >
+            <button type="button" className="" onClick={handleNextMonthButtonClick}>
               »
             </button>
           </div>
