@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { validateInput } from '../../utils/functions';
+import { validateHabitInput } from '../../utils/functions';
 import { HabitInputI } from '../../models/models';
 
 interface Props {
@@ -21,14 +22,14 @@ function ModalInput({
   updateHabitData,
   characterLength: { min, max },
 }: Props) {
-  const handleInputChange = (e: any): void => {
-    const updatedInput = e.target.value;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const updatedInput = type === 'number' ? +e.target.value : e.target.value;
 
-    const inputisValid = validateInput(updatedInput, min, max);
+    const inputisValid = validateHabitInput(updatedInput);
 
     const updatedHabitData = {
       ...habitData,
-      value: updatedInput,
+      value: updatedInput as string,
       valid: inputisValid,
     };
 

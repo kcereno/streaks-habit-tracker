@@ -95,7 +95,7 @@ function Modal() {
             />
 
             <ModalInput
-              label="Select ONE letter or emoji to be the habit icon?"
+              label="Select UPTO TWO letters or ONE emoji to be the habit icon"
               type="text"
               characterLength={{ min: 1, max: 2 }}
               habitData={habitIcon}

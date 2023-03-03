@@ -32,13 +32,11 @@ export const generateDateId = (year: number, month: number, day: number) => {
   return `${year}-${convertedMonth}-${convertedDay}`;
 };
 
-export const validateInput = (
-  input: string,
-  minLength: number,
-  maxLengthNumber: number,
-) => {
-  const updatedInput = input.replace(/\s/g, '');
-  return updatedInput.length >= minLength && input.length <= maxLengthNumber;
+export const validateHabitInput = (input: string | number) => {
+  if (typeof input === 'number') {
+    return input > 0;
+  }
+  return input.length > 0;
 };
 
 export const generateId = (habitName: string) => {
