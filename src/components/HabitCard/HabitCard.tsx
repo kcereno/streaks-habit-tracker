@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
 import { getFrequencyText } from '../../utils/functions';
+import EditDeleteHabitButtons from '../EditDeleteHabitButtons/EditDeleteHabitButtons';
 
 interface Props {
   habit: HabitI;
@@ -11,17 +12,13 @@ interface Props {
 }
 
 function HabitCard({ habit, updateHabit }: Props) {
-  const { editMode, updateSelectedHabit } = useContext(AppContext);
+  const { editMode } = useContext(AppContext);
 
   // eslint-disable-next-line object-curly-newline
   const { icon, name, progress, goal } = habit;
 
   const progressPercentage = (progress / goal) * 100;
   const frequencyText = getFrequencyText(goal);
-
-  const handleSelectClick = () => {
-    updateSelectedHabit(habit);
-  };
 
   const handlePlusButtonClick = () => {
     const newProgressValue = progress + 1;
@@ -36,28 +33,9 @@ function HabitCard({ habit, updateHabit }: Props) {
     updateHabit(updatedHabit);
   };
 
-  const handleDeleteClick = () => {
-    updateSelectedHabit(habit);
-  };
-
   return (
     <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">
-      {editMode && (
-        <div className="flex justify-between mt-2">
-          <button
-            className="btn btn-ghost  text-warning text-xs"
-            type="button"
-            onClick={handleSelectClick}>
-            <label htmlFor="modal">Edit</label>
-          </button>
-          <button
-            className="btn btn-ghost text-error text-center text-xs"
-            type="button"
-            onClick={handleDeleteClick}>
-            <label htmlFor="delete-habit-modal">Delete</label>
-          </button>
-        </div>
-      )}
+      {editMode && <EditDeleteHabitButtons habit={habit} />}
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
         <div className="text-center">
