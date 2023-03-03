@@ -7,7 +7,7 @@ import HabitBoard from './components/HabitBoard/HabitBoard';
 import HabitGrid from './components/HabitGrid/HabitGrid';
 import ViewToggle from './components/ViewToggle/ViewToggle';
 import Pagination from './components/Pagination/Pagination';
-import Layout from './layout/Layout/Layout';
+import Layout from './UI/Layout/Layout';
 
 import './App.css';
 import AppContext from './store/AppContext/app-context';
