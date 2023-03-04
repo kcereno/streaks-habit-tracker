@@ -1,5 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../../store/AppContext/app-context';
 
@@ -14,8 +12,16 @@ function HabitFormModal() {
   const [habitIcon, setHabitIcon] = useState<HabitInputI>(DEFAULT_HABIT_INPUT);
 
   // eslint-disable-next-line object-curly-newline
-  const { addHabit, editMode, selectedHabit, updateSelectedHabit, updateHabit } =
-    useContext(AppContext);
+  const {
+    addHabit,
+    editMode,
+    selectedHabit,
+    updateSelectedHabit,
+    updateHabit,
+    modalOpen,
+    setModalOpen,
+    modalType,
+  } = useContext(AppContext);
 
   useEffect(() => {
     if (editMode && selectedHabit) {
@@ -64,64 +70,62 @@ function HabitFormModal() {
     } else {
       addHabit(habit);
     }
-
+    setModalOpen(false);
     resetForm();
   };
 
   const handleCancel = () => {
+    setModalOpen(false);
     resetForm();
   };
 
   return (
-    <div>
-      <input type="checkbox" id="modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h1 className="text-xl font-bold">{!editMode ? 'Add Habit' : 'Edit Habit'}</h1>
-          <form onSubmit={handleSubmit}>
-            <HabitFormModalInput
-              label="What do you want to do?"
-              type="text"
-              maxLength={20}
-              habitData={habitName}
-              updateHabitData={setHabitName}
-            />
+    <div className={`modal ${modalOpen && modalType === 'form' && 'modal-open'}`}>
+      <div className="modal-box">
+        <h1 className="text-xl font-bold">{!editMode ? 'Add Habit' : 'Edit Habit'}</h1>
+        <form onSubmit={handleSubmit}>
+          <HabitFormModalInput
+            label="What do you want to do?"
+            type="text"
+            maxLength={20}
+            habitData={habitName}
+            updateHabitData={setHabitName}
+          />
 
-            <HabitFormModalInput
-              label="How many times a day?"
-              type="number"
-              habitData={habitGoal}
-              updateHabitData={setHabitGoal}
-            />
+          <HabitFormModalInput
+            label="How many times a day?"
+            type="number"
+            habitData={habitGoal}
+            updateHabitData={setHabitGoal}
+          />
 
-            <HabitFormModalInput
-              label="Select ONE emoji to represent your habit"
-              type="text"
-              maxLength={2}
-              habitData={habitIcon}
-              updateHabitData={setHabitIcon}
-              emoji
-            />
+          <HabitFormModalInput
+            label="Select ONE emoji to represent your habit"
+            type="text"
+            maxLength={2}
+            habitData={habitIcon}
+            updateHabitData={setHabitIcon}
+            emoji
+          />
 
-            <span className="label-text-alt">
-              To acces the emoji keyboard, cick on the input field and press:
-              <br />
-              On PCs: Press Windows key + ; (semicolon) or Windows key +. (period)
-              <br />
-              On Macs: Press Command + Control + Space
-            </span>
+          <span className="label-text-alt">
+            To acces the emoji keyboard, cick on the input field and press:
+            <br />
+            On PCs: Press Windows key + ; (semicolon) or Windows key +. (period)
+            <br />
+            On Macs: Press Command + Control + Space
+          </span>
 
-            <div className="modal-action">
-              <button type="submit" className="btn btn-success" disabled={!formIsValid()}>
-                <label htmlFor="modal">Submit</label>
-              </button>
+          <div className="modal-action">
+            <button type="submit" className="btn btn-success" disabled={!formIsValid()}>
+              Submit
+            </button>
 
-              <button type="button" className="btn btn-outline btn-error" onClick={handleCancel}>
-                <label htmlFor="modal">Cancel</label>
-              </button>
-            </div>
-          </form>
-        </div>
+            <button type="button" className="btn btn-outline btn-error" onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -1,36 +1,32 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../../store/AppContext/app-context';
 
 function ConfirmDeleteHabitModal() {
-  const { deleteHabit, selectedHabit } = useContext(AppContext);
+  const { deleteHabit, selectedHabit, modalType, modalOpen, setModalOpen } = useContext(AppContext);
 
   const handleDeleteButtonClick = () => {
     if (selectedHabit) {
       deleteHabit(selectedHabit.id);
     }
+
+    setModalOpen(false);
   };
   return (
-    <div>
-      <input type="checkbox" id="delete-habit-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Warning!</h3>
-          <p className="py-4">
-            Are you you want to delete this habit?
-            <br />
-            This action cannot be undone and all data will be erased.
-          </p>
-          <div className="modal-action">
-            <label htmlFor="delete-habit-modal" className="btn btn-outline">
-              No, I changed my mind
-            </label>
-            <button type="button" onClick={handleDeleteButtonClick}>
-              <label htmlFor="delete-habit-modal" className="btn btn-error">
-                Yes, delete it
-              </label>
-            </button>
-          </div>
+    <div className={`modal ${modalOpen && modalType === 'delete' && 'modal-open'}`}>
+      <div className="modal-box">
+        <h3 className="font-bold text-lg">Warning!</h3>
+        <p className="py-4">
+          Are you you want to delete this habit?
+          <br />
+          This action cannot be undone and all data will be erased.
+        </p>
+        <div className="modal-action">
+          <button type="button" className="btn btn-outline" onClick={handleDeleteButtonClick}>
+            No, I changed my mind
+          </button>
+          <button type="button" className="btn btn-error" onClick={handleDeleteButtonClick}>
+            Yes, delete it
+          </button>
         </div>
       </div>
     </div>

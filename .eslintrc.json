@@ -20,7 +20,9 @@
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        "object-curly-newline": "off",
+        "react/jsx-closing-bracket-location": "off"
     },
     "ignorePatterns":["tailwind.config.js","postcss.config.js"]
 

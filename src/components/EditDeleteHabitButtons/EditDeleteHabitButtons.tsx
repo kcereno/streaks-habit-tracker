@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
@@ -9,10 +7,17 @@ interface Props {
 }
 
 function EditDeleteHabitButtons({ habit }: Props) {
-  const { updateSelectedHabit } = useContext(AppContext);
+  const { updateSelectedHabit, setModalOpen, updateModalType } = useContext(AppContext);
 
-  const handleButtonClick = () => {
+  const handleEditClick = () => {
+    setModalOpen(true);
     updateSelectedHabit(habit);
+  };
+
+  const handleDeleteClick = () => {
+    updateSelectedHabit(habit);
+    updateModalType('delete');
+    setModalOpen(true);
   };
 
   return (
@@ -20,14 +25,14 @@ function EditDeleteHabitButtons({ habit }: Props) {
       <button
         className="btn btn-ghost  text-warning text-xs"
         type="button"
-        onClick={handleButtonClick}>
-        <label htmlFor="modal">Edit</label>
+        onClick={handleEditClick}>
+        Edit
       </button>
       <button
         className="btn btn-ghost text-error text-center text-xs"
         type="button"
-        onClick={handleButtonClick}>
-        <label htmlFor="delete-habit-modal">Delete</label>
+        onClick={handleDeleteClick}>
+        Delete
       </button>
     </div>
   );

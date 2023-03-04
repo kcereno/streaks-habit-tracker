@@ -15,6 +15,10 @@ export interface AppContextI {
   maxPages: number;
   selectedHabit: HabitI | null;
   updateSelectedHabit: (habit: HabitI | null) => void;
+  modalOpen: boolean;
+  setModalOpen: (modalOpen: boolean) => void;
+  modalType: 'form' | 'delete';
+  updateModalType: (modalType: 'form' | 'delete') => void;
 }
 
 const AppContext = createContext<AppContextI>({} as AppContextI);

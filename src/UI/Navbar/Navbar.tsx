@@ -1,9 +1,13 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 
 function Navbar() {
-  const { editMode, setEditMode } = useContext(AppContext);
+  const { editMode, setEditMode, setModalOpen, updateModalType } = useContext(AppContext);
+
+  const handleOpenClick = () => {
+    updateModalType('form');
+    setModalOpen(true);
+  };
 
   const handleEditClick = () => {
     setEditMode(true);
@@ -25,24 +29,25 @@ function Navbar() {
           </div>
           <div className="">
             {!editMode && (
-              <button className="btn btn-ghost text-success" type="button">
-                <label htmlFor="modal">Add</label>
+              <button
+                className="btn btn-ghost text-success"
+                type="button"
+                onClick={handleOpenClick}>
+                Add
               </button>
             )}
             {editMode ? (
               <button
                 className="btn btn-ghost text-error"
                 type="button"
-                onClick={handleCancelClick}
-              >
+                onClick={handleCancelClick}>
                 Cancel
               </button>
             ) : (
               <button
                 className="btn btn-ghost   text-warning"
                 type="button"
-                onClick={handleEditClick}
-              >
+                onClick={handleEditClick}>
                 Edit / Delete
               </button>
             )}

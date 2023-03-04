@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { HabitI } from '../../models/models';
