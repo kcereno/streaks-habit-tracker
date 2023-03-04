@@ -38,7 +38,7 @@ function HabitCard({ habit, updateHabit }: Props) {
         {/* Habit Details */}
         <div className="text-center">
           <h1 className="text-4xl tablet:text-5xl max:text-6xl">{icon}</h1>
-          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl">
+          <h2 className="text-xl mt-2 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl capitalize">
             {name}
           </h2>
           <p className="text-gray-400 max:text-xl">{frequencyText}</p>
