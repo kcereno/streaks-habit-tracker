@@ -12,27 +12,28 @@ interface Props {
 
 function HabitGridItem({ habit }: Props) {
   const { editMode } = useContext(AppContext);
-  const [month, setMonth] = useState(2);
+  const [month, setMonth] = useState<number>(2);
   const [year, setYear] = useState(2023);
 
-  const { name, logs } = habit;
+  useEffect(() => {
+    const today = new Date();
+    setMonth(today.getMonth() + 1);
+    setYear(today.getFullYear());
+  });
+
+  const { name } = habit;
 
   const handlePrevMonthButtonClick = () => {
-    if (month === 1) {
-      setMonth(12);
-      setYear(year - 1);
-    } else {
-      setMonth(month - 1);
-    }
+    const newMonth = month === 1 ? 12 : month - 1;
+    const newYear = month === 1 ? year - 1 : year;
+    setMonth(newMonth);
+    setYear(newYear);
   };
-
   const handleNextMonthButtonClick = () => {
-    if (month === 12) {
-      setMonth(1);
-      setYear(year + 1);
-    } else {
-      setMonth(month + 1);
-    }
+    const newMonth = month === 12 ? 1 : month + 1;
+    const newYear = month === 12 ? year + 1 : year;
+    setMonth(newMonth);
+    setYear(newYear);
   };
 
   return (
