@@ -1,7 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useMemo, useCallback } from 'react';
 import AppContext from '../../store/AppContext/app-context';
-import { HabitI } from '../../models/models';
-import { getFrequencyText } from '../../utils/functions';
+import { HabitI, HabitLogI } from '../../models/models';
+import { getFrequencyText, getTodaysFormattedDate } from '../../utils/functions';
 import EditDeleteHabitButtons from '../EditDeleteHabitButtons/EditDeleteHabitButtons';
 
 interface Props {
@@ -12,24 +12,45 @@ interface Props {
 function HabitCard({ habit, updateHabit }: Props) {
   const { editMode } = useContext(AppContext);
 
-  // eslint-disable-next-line object-curly-newline
-  const { icon, name, progress, goal } = habit;
+  const { icon, name, progress, goal, logs } = habit;
 
-  const progressPercentage = (progress / goal) * 100;
-  const frequencyText = getFrequencyText(goal);
+  useEffect(() => {
+    const today = getTodaysFormattedDate();
+    const todaysLog = logs.find((log) => log.date === today);
 
-  const handlePlusButtonClick = () => {
-    const newProgressValue = progress + 1;
+    let updatedLogs;
+    if (!todaysLog) {
+      const newLog: HabitLogI = {
+        date: today,
+        completed: false,
+      };
+      updatedLogs = [...logs, newLog];
+    } else {
+      updatedLogs = logs.map((log) => {
+        if (log.date === today) {
+          return {
+            ...log,
+            completed: progress === goal,
+          };
+        }
+        return log;
+      });
+    }
 
-    const updatedHabit = { ...habit, progress: newProgressValue };
+    const updatedHabit = { ...habit, logs: updatedLogs };
     updateHabit(updatedHabit);
-  };
-  const handleMinusButtonClick = () => {
-    const newProgressValue = progress - 1;
+  }, [progress, goal]);
 
-    const updatedHabit = { ...habit, progress: newProgressValue };
-    updateHabit(updatedHabit);
-  };
+  const progressPercentage = useMemo(() => (progress / goal) * 100, [progress, goal]);
+  const frequencyText = useMemo(() => getFrequencyText(goal), [goal]);
+
+  const handlePlusButtonClick = useCallback(() => {
+    updateHabit({ ...habit, progress: progress + 1 });
+  }, [habit, progress, updateHabit]);
+
+  const handleMinusButtonClick = useCallback(() => {
+    updateHabit({ ...habit, progress: progress - 1 });
+  }, [habit, progress, updateHabit]);
 
   return (
     <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 ">

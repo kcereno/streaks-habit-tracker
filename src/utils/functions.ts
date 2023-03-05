@@ -48,3 +48,5 @@ export const isEmoji = (string: string) => {
   const emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
   return emojiRegex.test(string);
 };
+
+export const getTodaysFormattedDate = () => new Date().toISOString().slice(0, 10);

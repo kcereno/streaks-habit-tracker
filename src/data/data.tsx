@@ -5,8 +5,8 @@ const mockHabits: HabitI[] = [
     id: '1',
     icon: '🏋️‍♂️',
     name: 'Exercise',
-    progress: 1,
-    goal: 1,
+    progress: 0,
+    goal: 2,
     logs: [
       { date: '2023-01-01', completed: true },
       { date: '2023-01-02', completed: true },
@@ -67,6 +67,7 @@ const mockHabits: HabitI[] = [
       { date: '2023-02-26', completed: true },
       { date: '2023-02-27', completed: true },
       { date: '2023-02-28', completed: true },
+      { date: '2023-03-28', completed: true },
     ],
   },
   {

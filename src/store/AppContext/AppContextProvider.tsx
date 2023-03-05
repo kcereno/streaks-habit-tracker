@@ -24,6 +24,8 @@ function AppContextProvider({ children }: Props) {
     setSelectedHabit(habit);
   };
 
+  const fetchHabit = (habitId: string) => habits.find((habit) => habit.id === habitId);
+
   const maxPages = Math.ceil(habits.length / (view === 'board' ? 6 : 4));
 
   const getDisplayedHabits = () => {
@@ -75,6 +77,7 @@ function AppContextProvider({ children }: Props) {
       setModalOpen,
       modalType,
       updateModalType,
+      fetchHabit,
     }),
     [editMode, habits, view, currentPage, maxPages, selectedHabit, modalOpen, modalType],
   );

@@ -7,6 +7,7 @@ export interface AppContextI {
   editMode: boolean;
   addHabit: (habit: HabitI) => void;
   deleteHabit: (habitId: string) => void;
+  fetchHabit: (habitId: string) => void;
   setEditMode: (editMode: boolean) => void;
   view: ViewTypes;
   updateView: (view: ViewTypes) => void;
