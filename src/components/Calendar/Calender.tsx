@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
 import { useContext } from 'react';
@@ -23,25 +24,21 @@ function Calender({ habit, date: { month, year } }: Props) {
   const toggleCompleted = (id: string) => {
     const logEntry = habit.logs.find((log) => log.date === id);
 
-    let updatedLogs;
-    if (logEntry) {
-      updatedLogs = habit.logs.map((log) => {
-        if (log.date === id) return { ...log, completed: !log.completed };
-
-        return log;
-      });
+    if (!logEntry) {
+      const updatedLog = { date: id, completed: true };
+      const updatedLogs = [...habit.logs, updatedLog];
+      const updatedHabit = { ...habit, progress: habit.progress + habit.goal, logs: updatedLogs };
+      updateHabit(updatedHabit);
     } else {
-      updatedLogs = [
-        ...habit.logs,
-        {
-          date: id,
-          completed: true,
-        },
-      ];
+      const updatedLog = { ...logEntry, completed: !logEntry.completed };
+      const updatedLogs = habit.logs.map((log) => (log.date === id ? updatedLog : log));
+      const updatedHabit = {
+        ...habit,
+        progress: updatedLog.completed ? habit.progress + habit.goal : habit.progress - habit.goal,
+        logs: updatedLogs,
+      };
+      updateHabit(updatedHabit);
     }
-
-    const updatedHabit = { ...habit, logs: updatedLogs };
-    updateHabit(updatedHabit);
   };
 
   return (
