@@ -57,6 +57,7 @@ function HabitFormModal() {
       goal: +habitGoal.value,
       icon: habitIcon.value,
       progress: 0,
+      streaks: { current: 0, longest: 0 },
       logs: [],
     };
 

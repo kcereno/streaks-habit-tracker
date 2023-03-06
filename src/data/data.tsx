@@ -7,6 +7,10 @@ const mockHabits: HabitI[] = [
     name: 'Exercise',
     progress: 0,
     goal: 2,
+    streaks: {
+      current: 0,
+      longest: 60,
+    },
     logs: [
       { date: '2023-01-01', completed: true },
       { date: '2023-01-02', completed: true },
@@ -67,7 +71,6 @@ const mockHabits: HabitI[] = [
       { date: '2023-02-26', completed: true },
       { date: '2023-02-27', completed: true },
       { date: '2023-02-28', completed: true },
-      { date: '2023-03-28', completed: true },
     ],
   },
   {
@@ -76,6 +79,10 @@ const mockHabits: HabitI[] = [
     name: 'Read',
     progress: 2,
     goal: 5,
+    streaks: {
+      current: 0,
+      longest: 4,
+    },
     logs: [
       { date: '2023-01-01', completed: false },
       { date: '2023-01-02', completed: false },
@@ -144,6 +151,10 @@ const mockHabits: HabitI[] = [
     name: 'Eat Healthy',
     progress: 1,
     goal: 3,
+    streaks: {
+      current: 0,
+      longest: 5,
+    },
     logs: [
       { date: '2023-01-01', completed: false },
       { date: '2023-01-02', completed: false },
@@ -211,7 +222,11 @@ const mockHabits: HabitI[] = [
     icon: '🎨',
     name: 'Draw',
     progress: 1,
-    goal: 2,
+    goal: 4,
+    streaks: {
+      current: 0,
+      longest: 4,
+    },
     logs: [
       { date: '2023-01-01', completed: false },
       { date: '2023-01-02', completed: false },
@@ -279,7 +294,11 @@ const mockHabits: HabitI[] = [
     icon: '🚰',
     name: 'Drink Water',
     progress: 2,
-    goal: 3,
+    goal: 1,
+    streaks: {
+      current: 0,
+      longest: 0,
+    },
     logs: [
       { date: '2023-02-15', completed: true },
       { date: '2023-02-16', completed: false },
@@ -293,6 +312,10 @@ const mockHabits: HabitI[] = [
     name: 'Meditate',
     progress: 1,
     goal: 2,
+    streaks: {
+      current: 0,
+      longest: 1,
+    },
     logs: [
       { date: '2023-02-15', completed: true },
       { date: '2023-02-19', completed: false },
@@ -304,6 +327,10 @@ const mockHabits: HabitI[] = [
     name: 'Practice Guitar',
     progress: 4,
     goal: 5,
+    streaks: {
+      current: 0,
+      longest: 0,
+    },
     logs: [],
   },
 ];

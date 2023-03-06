@@ -44,8 +44,8 @@ function HabitGridItem({ habit }: Props) {
       <div className="py-5 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">{name}</h2>
         <div className="flex justify-center gap-4 text-slate-500">
-          <p>Current: 4</p>
-          <p>Longest:10</p>
+          <p>{`Current: ${habit.streaks.current}`}</p>
+          <p>{`Longest: ${habit.streaks.longest}`}</p>
         </div>
         {/* Grid Dates */}
         <div className="mt-4 ">

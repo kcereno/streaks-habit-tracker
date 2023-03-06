@@ -4,6 +4,10 @@ export interface HabitI {
   name: string;
   progress: number;
   goal: number;
+  streaks: {
+    current: number;
+    longest: number;
+  };
   logs: HabitLogI[];
 }
 

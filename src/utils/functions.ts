@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import { HabitLogI } from '../models/models';
 /* eslint-disable import/prefer-default-export */
 import { months } from '../data/data';
 
@@ -56,4 +59,48 @@ export const getTodaysFormattedDate = () => {
   const year = today.getFullYear();
 
   return `${year}-${month}-${day}`;
+};
+
+export const calculateLongestStreak = (logs: HabitLogI[]) => {
+  let currentStreak = 0;
+  let longestStreak = 0;
+
+  for (let i = 0; i < logs.length; i++) {
+    if (logs[i].completed === true) {
+      currentStreak++;
+
+      if (currentStreak > longestStreak) {
+        longestStreak = currentStreak;
+      }
+    } else {
+      currentStreak = 0;
+    }
+  }
+
+  return longestStreak;
+};
+
+export const calculateCurrentStreak = (logs: HabitLogI[]) => {
+  const today = new Date();
+  let consecutiveCount = 0;
+
+  for (let i = logs.length - 1; i >= 0; i--) {
+    const { date, completed } = logs[i];
+
+    const entryDate = new Date(date);
+    const isConsecutive = completed && entryDate <= today;
+    const isYesterday = entryDate.getDate() === today.getDate() - 1;
+
+    if (isConsecutive && !isYesterday) {
+      // break streak if there's a gap in the dates
+      break;
+    }
+
+    if (isConsecutive && isYesterday) {
+      consecutiveCount++;
+      today.setDate(today.getDate() - 1);
+    }
+  }
+
+  return consecutiveCount;
 };
