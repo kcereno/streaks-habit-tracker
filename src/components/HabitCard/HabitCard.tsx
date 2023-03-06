@@ -16,6 +16,7 @@ function HabitCard({ habit, updateHabit }: Props) {
 
   useEffect(() => {
     const today = getTodaysFormattedDate();
+
     const todaysLog = logs.find((log) => log.date === today);
 
     let updatedLogs;

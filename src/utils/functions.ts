@@ -49,4 +49,11 @@ export const isEmoji = (string: string) => {
   return emojiRegex.test(string);
 };
 
-export const getTodaysFormattedDate = () => new Date().toISOString().slice(0, 10);
+export const getTodaysFormattedDate = () => {
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+
+  return `${year}-${month}-${day}`;
+};
