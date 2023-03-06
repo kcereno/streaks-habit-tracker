@@ -48,7 +48,7 @@ function Navbar() {
                 className="btn btn-ghost   text-warning"
                 type="button"
                 onClick={handleEditClick}>
-                Edit / Delete
+                Edit
               </button>
             )}
           </div>
