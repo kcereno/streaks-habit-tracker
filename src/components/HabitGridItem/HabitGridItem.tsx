@@ -2,7 +2,7 @@
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../store/AppContext/app-context';
 import { months } from '../../data/data';
-import Calender from '../Calendar/Calender';
+import GridCalendar from '../GridCalendar/GridCalendar';
 import { HabitI } from '../../models/models';
 import EditDeleteHabitButtons from '../EditDeleteHabitButtons/EditDeleteHabitButtons';
 
@@ -60,7 +60,7 @@ function HabitGridItem({ habit }: Props) {
             </button>
           </div>
           {/* Grid Calendar */}
-          <Calender date={{ month, year }} habit={habit} />
+          <GridCalendar date={{ month, year }} habit={habit} />
         </div>
       </div>
     </div>

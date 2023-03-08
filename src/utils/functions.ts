@@ -104,3 +104,5 @@ export const calculateCurrentStreak = (logs: HabitLogI[]) => {
 
   return consecutiveCount;
 };
+
+export const isFutureDate = (date: string) => new Date(date) > new Date();
