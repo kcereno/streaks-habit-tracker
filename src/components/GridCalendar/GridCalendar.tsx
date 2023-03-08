@@ -39,36 +39,34 @@ function GridCalendar({ habit, date: { month, year } }: Props) {
     }
 
     setShowError(false);
+    let updatedHabit: HabitI = { ...habit };
 
-    if (isToday && !selectedLogEntry) {
-      const updatedHabit = {
-        ...habit,
-        progress: habit.goal,
-        logs: [...habit.logs, { date: id, completed: true }],
-      };
-      updateHabit(updatedHabit);
-    }
-
-    if (isToday && selectedLogEntry) {
-      const updatedProgress = selectedLogEntry.completed ? 0 : habit.goal;
-
-      const updatedLogs = habit.logs.map((log) => {
-        if (log.date === id) {
-          return { ...log, completed: !log.completed };
-        }
-        return log;
-      });
-
-      const updatedHabit = { ...habit, progress: updatedProgress, logs: updatedLogs };
-      updateHabit(updatedHabit);
+    if (isToday) {
+      if (!selectedLogEntry) {
+        updatedHabit = {
+          ...habit,
+          progress: habit.goal,
+          logs: [...habit.logs, { date: id, completed: true }],
+        };
+      } else {
+        updatedHabit = {
+          ...habit,
+          progress: selectedLogEntry.completed ? 0 : habit.goal,
+          logs: habit.logs.map((log) => {
+            if (log.date === id) {
+              return { ...log, completed: !log.completed };
+            }
+            return log;
+          }),
+        };
+      }
     }
 
     if (!isToday && !selectedLogEntry) {
-      const updatedHabit = {
+      updatedHabit = {
         ...habit,
         logs: [...habit.logs, { date: id, completed: true }],
       };
-      updateHabit(updatedHabit);
     }
 
     if (!isToday && selectedLogEntry) {
@@ -78,10 +76,9 @@ function GridCalendar({ habit, date: { month, year } }: Props) {
         }
         return log;
       });
-
-      const updatedHabit = { ...habit, logs: updatedLogs };
-      updateHabit(updatedHabit);
+      updatedHabit = { ...habit, logs: updatedLogs };
     }
+    updateHabit(updatedHabit);
   };
 
   return (
