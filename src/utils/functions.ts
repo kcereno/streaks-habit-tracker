@@ -91,15 +91,13 @@ export const calculateLongestStreak = (logs: HabitLogI[]) => {
 };
 
 export const calculateCurrentStreak = (logs: HabitLogI[]): number => {
-  // Sort logs by date
   const sortedLogs = logs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  let currentStreak = 0;
 
+  let currentStreak = 0;
   let priorLogIsCompleted: boolean;
 
   const today = formatDate(new Date()); // 2021-08-01
 
-  //  Accepts date in YYYY-MM-DD format
   const hasCompletedLog = (date: string) => {
     const foundLog = sortedLogs.find((log) => log.date === date);
     return foundLog?.completed;
@@ -119,7 +117,6 @@ export const calculateCurrentStreak = (logs: HabitLogI[]): number => {
   const yesterday = decrementDate(today);
   let currentDate = yesterday;
 
-  // Checks if yesterday has log and is completed
   if (hasCompletedLog(yesterday)) {
     priorLogIsCompleted = true;
     currentStreak++;
@@ -137,9 +134,7 @@ export const calculateCurrentStreak = (logs: HabitLogI[]): number => {
     }
   }
 
-  if (hasCompletedLog(today)) {
-    currentStreak++;
-  }
+  if (hasCompletedLog(today)) currentStreak++;
 
   return currentStreak;
 };
