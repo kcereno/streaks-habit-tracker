@@ -85,6 +85,8 @@ function GridCalendar({ habit, date: { month, year } }: Props) {
       }
     }
 
+    const currentStreak = calculateCurrentStreak(updatedHabit.logs);
+
     updateHabit(updatedHabit);
   };
 

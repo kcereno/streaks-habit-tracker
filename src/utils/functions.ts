@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { HabitLogI } from '../models/models';
@@ -60,6 +62,14 @@ export const getTodaysFormattedDate = () => {
 
   return `${year}-${month}-${day}`;
 };
+// Convert date to YYYY-MM-DD format
+export const formatDate = (date: Date): string => {
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth() + 1;
+  const day = date.getUTCDate();
+
+  return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+};
 
 export const calculateLongestStreak = (logs: HabitLogI[]) => {
   let currentStreak = 0;
@@ -80,29 +90,58 @@ export const calculateLongestStreak = (logs: HabitLogI[]) => {
   return longestStreak;
 };
 
-export const calculateCurrentStreak = (logs: HabitLogI[]) => {
-  const today = new Date();
-  let consecutiveCount = 0;
+export const calculateCurrentStreak = (logs: HabitLogI[]): number => {
+  // Sort logs by date
+  const sortedLogs = logs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  let currentStreak = 0;
 
-  for (let i = logs.length - 1; i >= 0; i--) {
-    const { date, completed } = logs[i];
+  let priorLogIsCompleted: boolean;
 
-    const entryDate = new Date(date);
-    const isConsecutive = completed && entryDate <= today;
-    const isYesterday = entryDate.getDate() === today.getDate() - 1;
+  const today = formatDate(new Date()); // 2021-08-01
 
-    if (isConsecutive && !isYesterday) {
-      // break streak if there's a gap in the dates
-      break;
-    }
+  //  Accepts date in YYYY-MM-DD format
+  const hasCompletedLog = (date: string) => {
+    const foundLog = sortedLogs.find((log) => log.date === date);
+    return foundLog?.completed;
+  };
 
-    if (isConsecutive && isYesterday) {
-      consecutiveCount++;
-      today.setDate(today.getDate() - 1);
+  const decrementDate = (dateString: string) => {
+    const date = new Date(`${dateString}T00:00:00Z`);
+    date.setUTCDate(date.getUTCDate() - 1);
+
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  };
+
+  const yesterday = decrementDate(today);
+  let currentDate = yesterday;
+
+  // Checks if yesterday has log and is completed
+  if (hasCompletedLog(yesterday)) {
+    priorLogIsCompleted = true;
+    currentStreak++;
+    currentDate = decrementDate(yesterday);
+  } else {
+    priorLogIsCompleted = false;
+  }
+
+  while (priorLogIsCompleted) {
+    if (hasCompletedLog(currentDate)) {
+      currentStreak++;
+      currentDate = decrementDate(currentDate);
+    } else {
+      priorLogIsCompleted = false;
     }
   }
 
-  return consecutiveCount;
+  if (hasCompletedLog(today)) {
+    currentStreak++;
+  }
+
+  return currentStreak;
 };
 
 export const isFutureDate = (date: string) => new Date(date) > new Date();

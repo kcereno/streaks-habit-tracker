@@ -71,7 +71,7 @@ const mockHabits: HabitI[] = [
       // { date: '2023-02-26', completed: true },
       // { date: '2023-02-27', completed: true },
       // { date: '2023-02-28', completed: true },
-      // { date: '2023-03-06', completed: false },
+      // { date: '2023-03-08', completed: true },
     ],
   },
   // {
