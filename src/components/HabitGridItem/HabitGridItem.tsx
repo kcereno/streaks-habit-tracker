@@ -13,11 +13,12 @@ interface Props {
 function HabitGridItem({ habit }: Props) {
   const { editMode } = useContext(AppContext);
   const [month, setMonth] = useState<number>(0);
-  const [year, setYear] = useState(2023);
+  const [year, setYear] = useState(0);
 
   useEffect(() => {
-    const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
+    const currentMonth = month === 0 ? new Date().getMonth() + 1 : month;
+    const currentYear = year === 0 ? new Date().getFullYear() : year;
+
     setMonth(currentMonth);
     setYear(currentYear);
   }, [habit]);
