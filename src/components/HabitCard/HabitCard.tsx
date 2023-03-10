@@ -69,7 +69,7 @@ function HabitCard({ habit, updateHabit }: Props) {
         {/* Habit Details */}
         <div className="pt-6 text-center">
           <h1 className="text-9xl ">{icon}</h1>
-          <h2 className="text-4xl mt-6 font-bold capitalize">{name}</h2>
+          <h2 className="text-4xl mt-6 font-bold capitalize text-gray-200">{name}</h2>
           <p className="text-xl mt-1 text-gray-400 ">{frequencyText}</p>
         </div>
         {/* Habit Progress */}

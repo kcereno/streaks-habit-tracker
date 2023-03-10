@@ -334,18 +334,6 @@ const mockHabits: HabitI[] = [
     },
     logs: [],
   },
-  {
-    id: '8',
-    icon: '🎸',
-    name: 'Practice Guitar',
-    progress: 4,
-    goal: 5,
-    streaks: {
-      current: 0,
-      longest: 0,
-    },
-    logs: [],
-  },
 ];
 
 export default mockHabits;
