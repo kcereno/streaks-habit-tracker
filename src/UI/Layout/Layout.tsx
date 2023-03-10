@@ -11,7 +11,7 @@ function Layout({ children }: Props) {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1 flex flex-col items-center bg-base-300 ">
-        <div className="max-w-[900px] ">{children}</div>
+        <div className="w-full desktop:w-[900px]">{children}</div>
       </main>
       <Footer />
       <Modals />

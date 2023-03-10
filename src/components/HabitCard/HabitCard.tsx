@@ -63,20 +63,18 @@ function HabitCard({ habit, updateHabit }: Props) {
   }, [habit, progress, updateHabit]);
 
   return (
-    <div className="card w-2/5 grow px-2 card-compact bg-base-200 shadow-xl tablet:w-60 max-w-[300px]">
+    <div className="card px-2 card-compact bg-base-200 shadow-xl w-full tablet:max-w-[350px]">
       {editMode && <EditDeleteHabitButtons habit={habit} />}
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
-        <div className="text-center">
-          <h1 className="text-4xl tablet:text-5xl max:text-6xl">{icon}</h1>
-          <h2 className="text-xl mt-4 font-bold mobile-medium:text-2xl tablet:text-3xl max:text-4xl capitalize">
-            {name}
-          </h2>
-          <p className="text-gray-400 max:text-xl">{frequencyText}</p>
+        <div className="pt-6 text-center">
+          <h1 className="text-9xl ">{icon}</h1>
+          <h2 className="text-4xl mt-6 font-bold capitalize">{name}</h2>
+          <p className="text-xl mt-1 text-gray-400 ">{frequencyText}</p>
         </div>
         {/* Habit Progress */}
         <div className="mt-5 text-center">
-          <p>{`${progress}/${goal}`}</p>
+          <p className="text-xl">{`${progress}/${goal}`}</p>
           <progress
             className={`progress ${
               progressPercentage === 100 ? 'progress-success' : 'progress-error'
@@ -88,14 +86,14 @@ function HabitCard({ habit, updateHabit }: Props) {
         <div className="progress-buttons flex justify-center gap-1 tablet:gap-3 mt-4">
           <button
             type="button"
-            className="btn btn-square btn-outline btn-sm tablet:btn-md "
+            className="btn btn-square btn-outline"
             disabled={progress === 0}
             onClick={handleMinusButtonClick}>
             -
           </button>
           <button
             type="button"
-            className="btn btn-square  btn-outline btn-sm tablet:btn-md"
+            className="btn btn-square  btn-outline"
             onClick={handlePlusButtonClick}
             disabled={progress === goal}>
             +
