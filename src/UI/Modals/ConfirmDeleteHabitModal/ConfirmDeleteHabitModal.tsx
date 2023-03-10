@@ -3,14 +3,13 @@ import { useContext } from 'react';
 import AppContext from '../../../store/AppContext/app-context';
 
 function ConfirmDeleteHabitModal() {
-  const { deleteHabit, selectedHabit, modalType, modalOpen, setModalOpen, updateSelectedHabit } =
-    useContext(AppContext);
+  const { deleteHabit, selectedHabit, modalType, modalOpen, setModalOpen } = useContext(AppContext);
 
   const handleDeleteButtonClick = () => {
     if (selectedHabit) {
       deleteHabit(selectedHabit.id);
     }
-    updateSelectedHabit(null);
+
     setModalOpen(false);
   };
   return (

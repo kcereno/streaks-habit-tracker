@@ -13,7 +13,6 @@ function AppContextProvider({ children }: Props) {
   const [view, setView] = useState<ViewTypes>('board');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedHabit, setSelectedHabit] = useState<HabitI | null>(null);
-
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalType, setModalType] = useState<'form' | 'delete'>('form');
 

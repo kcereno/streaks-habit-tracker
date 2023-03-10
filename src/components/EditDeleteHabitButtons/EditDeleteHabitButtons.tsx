@@ -17,6 +17,7 @@ function EditDeleteHabitButtons({ habit }: Props) {
   const handleDeleteClick = () => {
     updateSelectedHabit(habit);
     updateModalType('delete');
+
     setModalOpen(true);
   };
 

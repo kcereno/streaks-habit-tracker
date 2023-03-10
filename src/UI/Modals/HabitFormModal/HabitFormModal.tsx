@@ -42,9 +42,9 @@ function HabitFormModal() {
         valid: true,
       });
       setHabitIcon({ value: selectedHabit.icon, touched: true, valid: true });
+    } else {
+      resetForm();
     }
-
-    resetForm();
   }, [selectedHabit, editMode]);
 
   // Event Handlers
