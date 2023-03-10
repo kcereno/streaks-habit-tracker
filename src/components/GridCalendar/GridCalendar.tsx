@@ -9,6 +9,7 @@ import {
   getTodaysFormattedDate,
   calculateCurrentStreak,
   isFutureDate,
+  calculateLongestStreak,
 } from '../../utils/functions';
 import { HabitI, HabitLogI } from '../../models/models';
 import AppContext from '../../store/AppContext/app-context';
@@ -86,8 +87,11 @@ function GridCalendar({ habit, date: { month, year } }: Props) {
     }
 
     const currentStreak = calculateCurrentStreak(updatedHabit.logs);
-
-    updateHabit({ ...updatedHabit, streaks: { ...updatedHabit.streaks, current: currentStreak } });
+    const longestStreak = calculateLongestStreak(updatedHabit.logs);
+    updateHabit({
+      ...updatedHabit,
+      streaks: { ...updatedHabit.streaks, current: currentStreak, longest: longestStreak },
+    });
   };
 
   return (

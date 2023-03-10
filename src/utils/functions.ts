@@ -75,17 +75,41 @@ export const calculateLongestStreak = (logs: HabitLogI[]) => {
   let currentStreak = 0;
   let longestStreak = 0;
 
-  for (let i = 0; i < logs.length; i++) {
-    if (logs[i].completed === true) {
+  const followingDayHasLog = (dateString: string) => {
+    const date = new Date(`${dateString}T00:00:00Z`);
+    date.setUTCDate(date.getUTCDate() + 1);
+
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+
+    const followingDay = `${year}-${month}-${day}`;
+
+    const followingDayLog = logs.find((log) => log.date === followingDay);
+    return followingDayLog;
+  };
+
+  const sortedLogs = logs.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  sortedLogs.forEach((log) => {
+    if (log.completed) {
       currentStreak++;
 
+      if (!followingDayHasLog(log.date)) {
+        if (currentStreak > longestStreak) {
+          longestStreak = currentStreak;
+        }
+        currentStreak = 0;
+      }
+    }
+
+    if (!log.completed) {
       if (currentStreak > longestStreak) {
         longestStreak = currentStreak;
       }
-    } else {
       currentStreak = 0;
     }
-  }
+  });
 
   return longestStreak;
 };
