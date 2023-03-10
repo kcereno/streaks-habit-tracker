@@ -10,7 +10,7 @@ interface Props {
 function AppContextProvider({ children }: Props) {
   const [habits, setHabits] = useState<HabitI[]>(mockHabits);
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [view, setView] = useState<ViewTypes>('grid');
+  const [view, setView] = useState<ViewTypes>('board');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedHabit, setSelectedHabit] = useState<HabitI | null>(null);
 
