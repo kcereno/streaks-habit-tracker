@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../../store/AppContext/app-context';
-
 import { generateId } from '../../../utils/functions';
 import { HabitI, HabitInputI } from '../../../models/models';
 import { DEFAULT_HABIT_INPUT } from '../../../data/default';
@@ -23,6 +22,17 @@ function HabitFormModal() {
     modalType,
   } = useContext(AppContext);
 
+  // Helpers
+
+  const formIsValid = (): boolean => habitName.valid && habitGoal.valid && habitIcon.valid;
+
+  const resetForm = () => {
+    updateSelectedHabit(null);
+    setHabitName(DEFAULT_HABIT_INPUT);
+    setHabitGoal(DEFAULT_HABIT_INPUT);
+    setHabitIcon(DEFAULT_HABIT_INPUT);
+  };
+
   useEffect(() => {
     if (editMode && selectedHabit) {
       setHabitName({ value: selectedHabit.name, touched: true, valid: true });
@@ -34,21 +44,8 @@ function HabitFormModal() {
       setHabitIcon({ value: selectedHabit.icon, touched: true, valid: true });
     }
 
-    setHabitName(DEFAULT_HABIT_INPUT);
-    setHabitGoal(DEFAULT_HABIT_INPUT);
-    setHabitIcon(DEFAULT_HABIT_INPUT);
+    resetForm();
   }, [selectedHabit, editMode]);
-
-  // Helpers
-
-  const formIsValid = (): boolean => habitName.valid && habitGoal.valid && habitIcon.valid;
-
-  const resetForm = () => {
-    updateSelectedHabit(null);
-    setHabitName(DEFAULT_HABIT_INPUT);
-    setHabitGoal(DEFAULT_HABIT_INPUT);
-    setHabitIcon(DEFAULT_HABIT_INPUT);
-  };
 
   // Event Handlers
 
