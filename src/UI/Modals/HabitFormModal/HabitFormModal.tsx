@@ -33,6 +33,10 @@ function HabitFormModal() {
       });
       setHabitIcon({ value: selectedHabit.icon, touched: true, valid: true });
     }
+
+    setHabitName(DEFAULT_HABIT_INPUT);
+    setHabitGoal(DEFAULT_HABIT_INPUT);
+    setHabitIcon(DEFAULT_HABIT_INPUT);
   }, [selectedHabit, editMode]);
 
   // Helpers

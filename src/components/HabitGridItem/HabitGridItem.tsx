@@ -42,7 +42,7 @@ function HabitGridItem({ habit }: Props) {
     <div className="card card-compact grow w-full bg-base-100 shadow-xl mx-2 tablet:w-auto">
       {editMode && <EditDeleteHabitButtons habit={habit} />}
       {/* Content Container */}
-      <div className="py-5 tablet:px-4">
+      <div className="py-6 tablet:px-4">
         <h2 className="font-bold text-3xl text-center">{name}</h2>
         <div className="flex justify-center gap-4 text-slate-500">
           <p>{`Current: ${habit.streaks.current}`}</p>

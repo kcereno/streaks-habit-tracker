@@ -111,6 +111,7 @@ function GridCalendar({ habit, date: { month, year } }: Props) {
                 day={day}
                 completed={isCompleted}
                 toggleCompleted={toggleCompleted}
+                valid={isFutureDate(dateId)}
               />
             );
           })}
