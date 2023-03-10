@@ -1,9 +1,6 @@
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-plusplus */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { HabitLogI } from '../models/models';
-/* eslint-disable import/prefer-default-export */
+
 import { months } from '../data/data';
 
 export const getFrequencyText = (frequency: number): string => {
