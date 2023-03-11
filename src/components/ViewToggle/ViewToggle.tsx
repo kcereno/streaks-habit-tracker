@@ -13,20 +13,18 @@ function ViewToggle() {
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center my-6 ">
       <div className="btn-group my-6">
         <button
           type="button"
-          className={`btn btn-sm ${view === 'board' && 'btn-active'}`}
-          onClick={handleBoardButtonClick}
-        >
+          className={`btn  ${view === 'board' && 'btn-active'}`}
+          onClick={handleBoardButtonClick}>
           board
         </button>
         <button
           type="button"
-          className={`btn btn-sm ${view === 'grid' && 'btn-active'}`}
-          onClick={handleGridButtonClick}
-        >
+          className={`btn  ${view === 'grid' && 'btn-active'}`}
+          onClick={handleGridButtonClick}>
           grid
         </button>
       </div>

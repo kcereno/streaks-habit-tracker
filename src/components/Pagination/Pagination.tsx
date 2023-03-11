@@ -13,14 +13,13 @@ function Pagination() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-6">
       <div className="btn-group my-5">
         <button
           className="btn"
           type="button"
           onClick={handlePreviousButtonClick}
-          disabled={currentPage === 1}
-        >
+          disabled={currentPage === 1}>
           «
         </button>
         <button className="btn" type="button">
@@ -30,8 +29,7 @@ function Pagination() {
           className="btn"
           type="button"
           onClick={handleNextButtonClick}
-          disabled={currentPage === maxPages}
-        >
+          disabled={currentPage === maxPages}>
           »
         </button>
       </div>
