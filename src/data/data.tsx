@@ -290,50 +290,6 @@ const mockHabits: HabitI[] = [
       { date: '2023-02-28', completed: false },
     ],
   },
-  {
-    id: '5',
-    icon: '🚰',
-    name: 'Drink Water',
-    progress: 2,
-    goal: 1,
-    streaks: {
-      current: 0,
-      longest: 0,
-    },
-    logs: [
-      { date: '2023-02-15', completed: true },
-      { date: '2023-02-16', completed: false },
-      { date: '2023-02-19', completed: true },
-      { date: '2023-02-20', completed: false },
-    ],
-  },
-  {
-    id: '6',
-    icon: '🌅',
-    name: 'Meditate',
-    progress: 1,
-    goal: 2,
-    streaks: {
-      current: 0,
-      longest: 1,
-    },
-    logs: [
-      { date: '2023-02-15', completed: true },
-      { date: '2023-02-19', completed: false },
-    ],
-  },
-  {
-    id: '7',
-    icon: '🎸',
-    name: 'Practice Guitar',
-    progress: 4,
-    goal: 5,
-    streaks: {
-      current: 0,
-      longest: 0,
-    },
-    logs: [],
-  },
 ];
 
 export default mockHabits;

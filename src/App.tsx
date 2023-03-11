@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import HabitBoard from './components/HabitBoard/HabitBoard';
@@ -26,7 +23,3 @@ function App() {
 }
 
 export default App;
-
-// Add todays date somewhere
-// Create logic to create a log for today
-// have board data match grid data for today
