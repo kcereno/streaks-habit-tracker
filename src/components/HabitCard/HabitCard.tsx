@@ -63,7 +63,7 @@ function HabitCard({ habit, updateHabit }: Props) {
   }, [habit, progress, updateHabit]);
 
   return (
-    <div className="card px-2 card-compact bg-base-200 shadow-xl w-full tablet:max-w-[350px]">
+    <div className="card px-2 card-compact bg-base-100 shadow-xl w-full tablet:max-w-[350px]">
       {editMode && <EditDeleteHabitButtons habit={habit} />}
       <div className="py-4 tablet:py-6 max:py-8">
         {/* Habit Details */}
